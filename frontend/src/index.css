@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Noto Sans Khmer", sans-serif;
+  font-weight: 600;
+}
+* {
+  font-family: "Noto Sans Khmer", sans-serif;
+}
+body {
+  font-family: 'Noto Sans Khmer', sans-serif;
+}
+
+@layer components {
+  .Nav_bar {
+    @apply md:pt-16 sm:ml-64 bg-gray-200 h-auto dark:bg-gray-950 overflow-hidden;
+  }
+  
+  .Div_bar {
+    @apply shadow-sm bg-slate-100 md:m-4 m-2 border-slate-200 p-6 ;
+  }
+  .input_text {
+    @apply p-2 placeholder:font-NotoSansKhmer w-full border-2 outline-none bg-gray-50/20 focus:border-blue-500;
+  }
+
+  .button_only_submit {
+    @apply bg-blue-500 px-5 py-2 text-white flex items-center gap-1 hover:bg-blue-400 font-NotoSansKhmer font-bold;
+  }
+
+  .button_only_close {
+    @apply border-2 px-5 border-gray-400 hover:border-red-300 font-bold py-1.5 font-NotoSansKhmer;
+  }
+
+  .select_page_size {
+    @apply px-5 p-2 placeholder:font-NotoSansKhmer border-2 outline-none bg-gray-50/20 focus:border-blue-500;
+  }
+
+  .button_export {
+    @apply px-5 p-2 flex text-center space-x-2 placeholder:font-NotoSansKhmer border-2 outline-none bg-gray-50/20 focus:border-blue-500;
+  }
+  .modal_title {
+    @apply text-xl font-semibold text-gray-900 flex justify-between p-4 border-b  dark:text-white ;
+  }
+  .modal {
+    @apply fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-30;
+  }
+  .modal_center {
+    @apply relative w-full bg-white shadow dark:bg-gray-700 m-2;
+  }
+  .modal_form {
+    @apply p-4 bottom-8 overflow-y-auto max-h-screen;
+  }
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+td,
+th {
+  border: 1px solid #f5f7f8;
+  text-align: left;
+  padding: 8px;
+}
+
+
+@layer base {
+  tr:nth-child(even) {
+    @apply bg-blue-500/10 text-black/70;
+  }
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+.hidden-scrollbar {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+
+/* //////////////// */
+@media print {
+  body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+  }
+  .invoice-print-container {
+      width: 100%;
+      padding: 10px;
+  }
+  .invoice-header {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+  .invoice-table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+  .invoice-table th, .invoice-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+  }
+  .invoice-footer {
+      margin-top: 20px;
+      text-align: center;
+  }
+  .btn-print {
+      display: none;
+  }
+}
