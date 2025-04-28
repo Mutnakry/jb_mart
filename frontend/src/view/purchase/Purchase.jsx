@@ -13,9 +13,7 @@ const Purchase = () => {
         {
             name: ' ផលិតផលទាំងអស់',
         },
-        {
-            name: 'បញ្ចូលផលិតផល',
-        },
+       
         {
             name: 'ព័ត៍មានរបាយការណ៍ស្តុក',
         },
@@ -50,10 +48,10 @@ const Purchase = () => {
                                     {/* <PurchaseDetail /> */}
                                     {/* <PrintPurchaseDetail/> */}
                                 </TabPanel>
-                                <TabPanel className="p-4 border">
-                                    {/* <PuchaseList /> */}
+                                {/* <TabPanel className="p-4 border">
+                                  
                                     <PurchaseDetail />
-                                </TabPanel>
+                                </TabPanel> */}
                                 <TabPanel className="p-4 border border-gray-300 rounded-md">
                                     <PurchaseInfo />
                                 </TabPanel>

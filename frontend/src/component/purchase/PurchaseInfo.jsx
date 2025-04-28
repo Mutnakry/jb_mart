@@ -179,11 +179,6 @@ const Dashboard = () => {
                     <p><FaClipboardList className="text-lg " /></p>
                     <p className="font-NotoSansKhmer font-bold ">តារាងបញ្ជីប្រភេទទំនិញ</p>
                 </div>
-                <div className="flex justify-end">
-                    <Link className="button_only_submit" to="/createpurchase">
-                        + បង្កើតម៉ាកយីហោថ្មី
-                    </Link>
-                </div>
 
                 <div className="flex justify-between items-center my-3">
                     <div className="flex flex-col gap-2 font-bold font-NotoSansKhmer">

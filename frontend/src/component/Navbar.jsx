@@ -83,7 +83,7 @@ const Navbar = () => {
     const accountRoutes = ['/account', '/account_list']
     const paymentRoutes = ['/paymenttype', '/payment_list']
     const usersRoutes = ['/user', '/createuser']
-    const reportsRoutes = ['/InvocePurchase', '/InvoceSaleAndPuchase', '/CustomerAndSupplier', '/InvoiceGroupCustomer', '/InvoiceStock', '/SaleProductQTY','/OrderPurchase','/SaleProduct','/CostInvoice','/ProductPobpular','/ReportClostCash','/OpenBalenceList']
+    const reportsRoutes = ['/InvocePurchase', '/InvoceSaleAndPuchase', '/CustomerAndSupplier', '/InvoiceGroupCustomer', '/InvoiceStock', '/SaleProductQTY', '/OrderPurchase', '/SaleProduct', '/CostInvoice', '/ProductPobpular', '/ReportClostCash', '/OpenBalenceList']
     const currentcyRoutes = ['/exchange', '/currency_list']
     const ProductDisRoutes = ['/discount_product', '/create_discount_product']
 
@@ -272,7 +272,7 @@ const Navbar = () => {
                         </div>
                         <div className="flex items-center">
                             <div className='flex space-x-4'>
-                                <NavLink to="/index/pos" >
+                                <NavLink to="/check/pos" >
                                     <div className='relative flex items-center px-6 py-2 space-x-2 text-lg font-medium transition duration-300 text-black/60'>
                                         <svg
                                             className="flex-shrink-0 w-5 h-5 "
@@ -474,12 +474,12 @@ const Navbar = () => {
                                                 <p className="font-bold font-NotoSansKhmer">បន្ថែមផលិតផល</p>
                                             </div>
                                         )}
-                                        <NavLink to="/tests" className={navLinkStyle}>
+                                        {/* <NavLink to="/tests" className={navLinkStyle}>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="ml-3 size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                                             </svg>
                                             <p className="font-bold font-NotoSansKhmer">បញ្ចូលផលិតផល</p>
-                                        </NavLink>
+                                        </NavLink> */}
                                         <NavLink to="/udit" className={navLinkStyle}>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="ml-3 size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
@@ -575,7 +575,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         {/* Purchase POS */}
-                        <li>
+                        {/* <li>
                             <NavLink to="/index/pos/user" className={navLinkStyle}>
                                 <svg
                                     className="flex-shrink-0 w-5 h-5 "
@@ -590,7 +590,7 @@ const Navbar = () => {
                                     ផ្ទាំងលក់ទំនិញសម្រាប់អតិជន
                                 </span>
                             </NavLink>
-                        </li>
+                        </li> */}
 
 
                         {(userRol === 'superadmin' || userRol === 'user' || userRol === 'admin') && (
@@ -627,7 +627,7 @@ const Navbar = () => {
                                 </li>
 
                                 {/*  Currency Dropdown */}
-                                <li className="space-y-2">
+                                {/* <li className="space-y-2">
                                     <button onClick={handleCurrencyDropdown} className={`flex items-center p-3 w-full text-left justify-between ${isCurrencyDropdown ? "bg-blue-700 dark:bg-blue-500 text-white" : "text-gray-900 dark:text-white"}`}>
                                         <div className="flex items-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-receipt"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z" /><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" /><path d="M12 17.5v-11" /></svg>
@@ -654,6 +654,16 @@ const Navbar = () => {
                                             <p className="font-bold font-NotoSansKhmer">បញ្ជីបញ្ជាទិញ</p>
                                         </NavLink>
                                     </div>
+                                </li> */}
+                                <li>
+                                    <NavLink to="/exchange" className={navLinkStyle}>
+                                    <div className="flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-receipt"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z" /><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" /><path d="M12 17.5v-11" /></svg>
+                                            <span className="flex-1 font-bold ms-3 whitespace-nowrap font-NotoSansKhmer">
+                                                រូបិយប័ណ្ណ
+                                            </span>
+                                        </div>
+                                    </NavLink>
                                 </li>
                                 {/*  Extense Dropdown */}
                                 <li className="space-y-2">
@@ -709,7 +719,7 @@ const Navbar = () => {
                                                 </svg>
                                                 <p className="font-bold font-NotoSansKhmer">បញ្ជីឈ្មោះគណនី</p>
                                             </NavLink>
-                                            <NavLink to="/purchase-list" className={navLinkStyle}>
+                                            {/* <NavLink to="/purchase-list" className={navLinkStyle}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="ml-3 size-6">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                                                 </svg>
@@ -732,7 +742,7 @@ const Navbar = () => {
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                                                 </svg>
                                                 <p className="font-bold font-NotoSansKhmer">របាយការណ៍គណនីចំណាយ</p>
-                                            </NavLink>
+                                            </NavLink> */}
                                         </div>
                                     </li>
                                 )}
@@ -756,12 +766,12 @@ const Navbar = () => {
                                             </svg>
                                             <p className="font-bold font-NotoSansKhmer">បញ្ជីបង់ប្រាក់</p>
                                         </NavLink>
-                                        <NavLink to="/purchase-list" className={navLinkStyle}>
+                                        {/* <NavLink to="/purchase-list" className={navLinkStyle}>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="ml-3 size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                                             </svg>
                                             <p className="font-bold font-NotoSansKhmer">បញ្ជីបង់ប្រាក់</p>
-                                        </NavLink>
+                                        </NavLink> */}
                                     </div>
                                 </li>
 
@@ -827,12 +837,12 @@ const Navbar = () => {
                                             </svg>
                                             <p className="font-bold font-NotoSansKhmer">ទិញ & លក់</p>
                                         </NavLink>
-                                        <NavLink to="/purchase-list" className={navLinkStyle}>
+                                        {/* <NavLink to="/purchase-list" className={navLinkStyle}>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="ml-3 size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                                             </svg>
                                             <p className="font-bold font-NotoSansKhmer">របាយការណ៍ពន្ធ</p>
-                                        </NavLink>
+                                        </NavLink> */}
                                         <NavLink to="/CustomerAndSupplier" className={navLinkStyle}>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="ml-3 size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
@@ -863,12 +873,12 @@ const Navbar = () => {
                                             </svg>
                                             <p className="font-bold font-NotoSansKhmer">ផលិតផលពេញនិយម</p>
                                         </NavLink>
-                                        <NavLink to="/purchase-list" className={navLinkStyle}>
+                                        {/* <NavLink to="/purchase-list" className={navLinkStyle}>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="ml-3 size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                                             </svg>
                                             <p className="font-bold font-NotoSansKhmer whitespace-nowrap">របាយការណ៍សម្ភារៈ</p>
-                                        </NavLink>
+                                        </NavLink> */}
                                         <NavLink to="/OrderPurchase" className={navLinkStyle}>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="ml-3 size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />

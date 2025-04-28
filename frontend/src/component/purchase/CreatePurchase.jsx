@@ -723,7 +723,7 @@ const CreatePurchase = () => {
                                                 className="bg-gray-100 input_text"
                                             />
                                         </div>
-                                        <div className="space-y-2">
+                                        {/* <div className="space-y-2">
                                             <label htmlFor="">វិធីសាទូទាត់</label>
                                             <select
                                                 className='input_text'
@@ -739,7 +739,7 @@ const CreatePurchase = () => {
                                                 ))}
 
                                             </select>
-                                        </div>
+                                        </div> */}
                                         <div className="space-y-2">
                                             <label htmlFor="groupCustomer" className="font-NotoSansKhmer">វិធីសាស្សបង់ប្រាក់:</label>
                                             <select

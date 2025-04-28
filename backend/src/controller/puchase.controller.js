@@ -251,150 +251,6 @@ exports.CreatePurchase = async (req, res) => {
 
 
 
-/// get data  update purchase
-exports.UpdatePurchase1 = async (req, res) => {
-  try {
-    const {
-      customerId,
-      products,
-      paymenttype_id,
-      account_id,
-      amount_total,
-      amount_discount,
-      amount_pay,
-      pay_date,
-    } = req.body;
-
-    // Validation
-    if (!customerId || !Array.isArray(products) || products.length === 0) {
-      return res.status(400).json({
-        error: "Invalid request. Ensure customerId and products array are provided and non-empty.",
-      });
-    }
-
-    // Update `purchase_detail` table
-    const sqlUpdateCustomer = `
-      UPDATE purchase_detail
-      SET
-        paymenttype_id = ?,
-        account_id = ?,
-        amount_total = ?,
-        amount_discount = ?,
-        amount_pay = ?,
-        pay_date = ?
-      WHERE id = ?
-    `;
-    const customerValues = [
-      paymenttype_id,
-      account_id,
-      amount_total,
-      amount_discount,
-      amount_pay,
-      pay_date,
-      customerId,
-    ];
-    const [customerUpdateResult] = await db.promise().query(sqlUpdateCustomer, customerValues);
-
-    if (customerUpdateResult.affectedRows === 0) {
-      return res.status(404).json({ error: "Customer not found or no changes made." });
-    }
-
-    console.log(`Updated purchase_detail for customerId: ${customerId}`);
-
-    // Iterate through products and update `purchase` table
-    const productResults = [];
-    for (const product of products) {
-      const {
-        supplier_id,
-        product_id,
-        date_by,
-        qty,
-        discount,
-        cost_price,
-        included_tax,
-        excluded_tax,
-        total,
-        status,
-        user_at,
-      } = product;
-
-      // Check if product exists in `purchase` table
-      const [existingProduct] = await db
-        .promise()
-        .query("SELECT 1 FROM purchase WHERE purchasedetail_id = ? AND product_id = ?", [
-          customerId,
-          product_id,
-        ]);
-
-      if (existingProduct.length > 0) {
-        // Update existing product record
-        const sqlUpdateProduct = `
-          UPDATE purchase
-          SET
-            supplier_id = ?,
-            date_by = ?,
-            qty = ?,
-            discount = ?,
-            cost_price = ?,
-            include_tax = ?,
-            exclude_tax = ?,
-            total = ?,
-            status = ?,
-            user_update = ?
-          WHERE purchasedetail_id = ? AND product_id = ?
-        `;
-        const productValues = [
-          supplier_id,
-          date_by,
-          qty,
-          discount,
-          cost_price,
-          included_tax,
-          excluded_tax,
-          total,
-          status,
-          user_at,
-          customerId,
-          product_id,
-        ];
-        const [updateResult] = await db.promise().query(sqlUpdateProduct, productValues);
-        productResults.push({ product_id, action: "updated", affectedRows: updateResult.affectedRows });
-      } else {
-        // Insert new product record if not found
-        const sqlInsertProduct = `
-          INSERT INTO purchase
-          (supplier_id, product_id, purchasedetail_id, date_by, qty, discount, cost_price, include_tax, exclude_tax, total, status, user_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        `;
-        const productValues = [
-          supplier_id,
-          product_id,
-          customerId,
-          date_by,
-          qty,
-          discount,
-          cost_price,
-          included_tax,
-          excluded_tax,
-          total,
-          status,
-          user_at,
-        ];
-        const [insertResult] = await db.promise().query(sqlInsertProduct, productValues);
-        productResults.push({ product_id, action: "inserted", affectedRows: insertResult.affectedRows });
-      }
-    }
-
-    res.status(200).json({
-      message: "Purchase updated successfully.",
-      productResults,
-    });
-  } catch (err) {
-    console.error("Error in UpdatePurchase:", err);
-    res.status(500).json({ error: "An error occurred while updating the purchase." });
-  }
-};
-
 
 /// get data  update purchase​ success 
 exports.UpdatePurchase = async (req, res) => {
@@ -550,17 +406,43 @@ exports.UpdatePurchase = async (req, res) => {
 
 
 
-exports.DeletePurchase = (req, res) => {
-  const { id } = req.params;
-  const sql = "DELETE FROM purchase WHERE id = $1";
-  db.query(sql, [id], (err, results) => {
-    if (err) {
-      return res.status(500).send(err);
-    }
-    res.json(results);
-  });
-}
+// exports.DeletePurchase = (req, res) => {
+//   const { id } = req.params;
+//   const sql = "DELETE FROM purchase WHERE id = $1";
+//   db.query(sql, [id], (err, results) => {
+//     if (err) {
+//       return res.status(500).send(err);
+//     }
+//     res.json(results);
+//   });
+// }
 
+
+exports.DeletePurchase = async (req, res) => {
+  const { id } = req.params;
+
+  const connection = await db.promise().getConnection(); // Use a transaction
+  try {
+    await connection.beginTransaction();
+
+    // Step 1: Delete from `purchase` table
+    const deletePurchaseSql = "DELETE FROM purchase WHERE purchasedetail_id = ?";
+    await connection.query(deletePurchaseSql, [id]);
+
+    // Step 2: Delete from `purchase_detail` table
+    const deletePurchaseDetailSql = "DELETE FROM purchase_detail WHERE id = ?";
+    await connection.query(deletePurchaseDetailSql, [id]);
+
+    await connection.commit();
+    res.status(200).json({ message: "Purchase and Purchase Detail deleted successfully." });
+  } catch (err) {
+    await connection.rollback();
+    console.error("Error in DeletePurchase:", err);
+    res.status(500).json({ error: "An error occurred while deleting the purchase." });
+  } finally {
+    connection.release();
+  }
+};
 
 
 

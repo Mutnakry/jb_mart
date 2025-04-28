@@ -120,6 +120,7 @@ const Dashboard = () => {
                     await axios.delete(`${API_URL}/api/purchase/${selectedpurchasesId}`);
                     toast.success('Successfully deleted!', { autoClose: 3000 });
                     setIsModalDelete(false); // Close the modal
+                    getAllPuchase();
                 } catch (err) {
                     console.error(err);
                     toast.error('An error occurred. Please try again!', { autoClose: 3000 });
