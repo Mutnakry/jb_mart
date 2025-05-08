@@ -93,7 +93,7 @@ const Dashboard = () => {
                 setSelectedproductId(null);
             } catch (err) {
                 console.error(err);
-                toast.error('សូមលោកព្យាយាមម្ដងទៀត ស្មោះមានរួចហើយ !', { autoClose: 3000 });
+                toast.error('សូមលោកព្យាយាមម្ដងទៀត ស្មោះនេះមានមាននៅក្នុងរបាយការរួចហើយ', { autoClose: 3000 });
             }
         }
     };
@@ -218,7 +218,7 @@ const Dashboard = () => {
                             value={limit}
                             onChange={(e) => setLimit(Number(e.target.value))}
                             className="input_text w-[100px]">
-                            {[25, 2, 50, 100, 500].map(value => (
+                            {[25, 50, 100, 500].map(value => (
                                 <option key={value} value={value}>{value}</option>
                             ))}
                         </select>

@@ -129,7 +129,7 @@ const Dashboard = () => {
         console.error(err);
         // toast.error('សូមលោកព្យាយាមម្ដងទៀត ស្មោះមានរួចហើយ !', { autoClose: 3000 });
 
-        toast.error(`សូមលោកព្យាយាមម្ដងទៀត ស្មោះ ​« ${names} »មានរួចហើយ !`, { autoClose: 3000 });
+        toast.error(`សូមលោកព្យាយាមម្ដងទៀត ស្មោះនេះ ​« ${names} »មិនអាចលុបបានទេ!`, { autoClose: 3000 });
       }
     }
   };

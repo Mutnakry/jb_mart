@@ -307,16 +307,17 @@ const Dashboard = () => {
                                                         </Link>
                                                     )}
 
-                                                    {purchase.status === 'completed' ? (
-                                                        <span className="p-2 bg-blue-500 opacity-50 cursor-not-allowed">
-                                                            <FaPencilAlt className='text-white' />
-                                                        </span>
-                                                    ) : (
-                                                        <Link className="p-2 bg-blue-500" to={`/purchase/${purchase.purchasedetail_id}`}>
-                                                            <FaPencilAlt className='text-white' />
-                                                        </Link>
+                                                    {userRol !== 'superadmin' && (
+                                                        purchase.status === 'completed' ? (
+                                                            <span className="p-2 bg-blue-500 opacity-50 cursor-not-allowed">
+                                                                <FaPencilAlt className="text-white" />
+                                                            </span>
+                                                        ) : (
+                                                            <Link className="p-2 bg-blue-500" to={`/purchase/${purchase.purchasedetail_id}`}>
+                                                                <FaPencilAlt className="text-white" />
+                                                            </Link>
+                                                        )
                                                     )}
-
                                                     <Link
                                                         to={`/createpurchase/${purchase.purchasedetail_id}`}
                                                         className="flex items-center gap-1 p-2 font-bold text-white bg-green-500 hover:bg-green-400"

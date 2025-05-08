@@ -236,7 +236,7 @@ const ClostCashHand = ({ setIsOpenCash }) => {
             onClick={handleOverlayClick}
         >
             <div>
-                <div className=" w-full max-w-xl m-4 bg-white rounded shadow-md mt-10 p-2 py-4 dark:bg-gray-700">
+                <div className=" w-full max-w-xl mx-2 bg-white rounded shadow-md p-2 py-4 dark:bg-gray-700">
                     <div className="">
                         <h2 className="text-xl font-bold text-green-500 mb-4">កំពុងបើលការលក់</h2>
 

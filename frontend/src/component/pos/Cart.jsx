@@ -376,44 +376,44 @@ const Cart = () => {
     // setIsSubmitting(true);
     console.log("Order Data:", orderData);
 
-    navigate('/index/invoce');
+    // navigate('/index/invoce');
     // navigate('/index/pos/user');
     // clearCart();
-    // try {
-    //   setIsSubmitting(true);
-    //   const response = await fetch(`${API_URL}/api/order`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(orderData),
-    //   });
+    try {
+      setIsSubmitting(true);
+      const response = await fetch(`${API_URL}/api/order`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
 
-    //   const data = await response.json();
-    //   if (response.ok) {
-    //     navigate('/index/invoce');
-    //     setAccount_ID('');
-    //     setCustomer_ID('');
-    //     setPaymentType_ID('');
-    //     setPaymentTypeCurrency('usd')
-    //     setIsInsertModalOpen(false);
-    //     setIsModaleQRCode(false)
-    //     setPayMoney(0);
-    //     setPaymentTypeCurrency('usd');
-    //     clearCart();
-    //   } else {
-    //     alert("Error: " + data.error);
-    //   }
-    // } catch (error) {
-    //   console.error("Error during order submission:", error);
-    //   alert("There was an error saving the order.");
+      const data = await response.json();
+      if (response.ok) {
+        navigate('/index/invoce');
+        setAccount_ID('');
+        setCustomer_ID('');
+        setPaymentType_ID('');
+        setPaymentTypeCurrency('usd')
+        setIsInsertModalOpen(false);
+        setIsModaleQRCode(false)
+        setPayMoney(0);
+        setPaymentTypeCurrency('usd');
+        clearCart();
+      } else {
+        alert("Error: " + data.error);
+      }
+    } catch (error) {
+      console.error("Error during order submission:", error);
+      alert("There was an error saving the order.");
 
-    // } finally {
-    //   setIsSubmitting(false);
-    //   clearCart();
-    //   setIsInsertModalOpen(false);
-    //   setIsModaleQRCode(false)
-    // }
+    } finally {
+      setIsSubmitting(false);
+      clearCart();
+      setIsInsertModalOpen(false);
+      setIsModaleQRCode(false)
+    }
 
   };
 

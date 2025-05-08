@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../component/Navbar';
 import ChartPruchaeseDetail from './Dashbord/ChartPruchaeseDetail'
 import ProductPurchase from './Dashbord/ProductPurchase'
@@ -20,6 +20,17 @@ import Profit from './Dashbord/Profit'
 import IncomeExpentProfit from './Dashbord/IncomeExpentProfit'
 
 const Dashboard = () => {
+
+  // State to hold user information
+  const [userNames, setUserNames] = useState('');
+  const [userRol, setUserRol] = useState('');
+  useEffect(() => {
+    setUserNames(localStorage.getItem('user_names') || '');
+    setUserRol(localStorage.getItem('user_rol') || '');
+
+  }, []);
+
+
   return (
     <div className=''>
       <Navbar />
@@ -50,47 +61,55 @@ const Dashboard = () => {
             <div className='flex items-center col-span-1 p-6 my-4 bg-white border-t-2 border-green-600 shadow-sm'>
               <Check_NoteQTYProdut />
             </div>
-            <div className='grid xl:grid-cols-3  md:grid-cols-1 grid-cols-1 items-center  p-6 my-4 bg-white border-t-2 border-green-600 shadow-sm'>
-              <div>
-                <IncomeSale />
-                <Expent />
-                <Profit />
+            {(userRol === 'superadmin' || userRol === 'admin') && (
+              <div className='grid xl:grid-cols-3  md:grid-cols-1 grid-cols-1 items-center  p-6 my-4 bg-white border-t-2 border-green-600 shadow-sm'>
+                <div>
+                  <IncomeSale />
+                  <Expent />
+                  <Profit />
+                </div>
+                <div className='col-span-2'>
+                  <IncomeExpentProfit />
+                </div>
               </div>
-              <div className='col-span-2'>
-                <IncomeExpentProfit />
-              </div>
-            </div>
-            <div className='flex items-center col-span-1 p-6 bg-white border-t-2 border-yellow-600'>
-              <ChartPruchaeseDetail_InMonth />
-            </div>
-            <div className='grid xl:grid-cols-2  md:grid-cols-2 grid-cols-1 gap-6 my-4'>
+            )}
+            {(userRol === 'superadmin' || userRol === 'admin') && (
               <div className='flex items-center col-span-1 p-6 bg-white border-t-2 border-yellow-600'>
-                <SaleproductInDayDolla />
+                <ChartPruchaeseDetail_InMonth />
+              </div>
+            )}
+            {(userRol === 'superadmin' || userRol === 'admin') && (
+              <div className='grid xl:grid-cols-2  md:grid-cols-2 grid-cols-1 gap-6 my-4'>
+                <div className='flex items-center col-span-1 p-6 bg-white border-t-2 border-yellow-600'>
+                  <SaleproductInDayDolla />
 
-              </div>
-              <div className='flex items-center col-span-1 p-6 bg-white border-t-2 border-green-600 shadow-sm'>
-                <SaleProductSumDay />
-              </div>
-              {/* <div className='flex items-center col-span-1 p-6 bg-white border-t-2 border-pink-600'>
+                </div>
+                <div className='flex items-center col-span-1 p-6 bg-white border-t-2 border-green-600 shadow-sm'>
+                  <SaleProductSumDay />
+                </div>
+                {/* <div className='flex items-center col-span-1 p-6 bg-white border-t-2 border-pink-600'>
                 <SaleProductExchang />
               </div> */}
-            </div>
-
-            <div className='flex items-center col-span-1 p-6 bg-white border-t-2 border-pink-600'>
-              <SaleProductExchang />
-            </div>
-
-            <div className='flex items-center col-span-1 p-6 bg-white border-t-2 border-pink-600'>
-              <SumOrderAll />
-            </div>
+              </div>
+            )}
+            {(userRol === 'superadmin' || userRol === 'admin') && (
+              <div className='flex items-center col-span-1 p-6 bg-white border-t-2 border-pink-600'>
+                <SaleProductExchang />
+              </div>
+            )}
+            {(userRol === 'superadmin' || userRol === 'admin') && (
+              <div className='flex items-center col-span-1 p-6 bg-white border-t-2 border-pink-600'>
+                <SumOrderAll />
+              </div>
+            )}
             <div className='flex items-center col-span-1 p-6 mt-2 bg-white border-t-2 border-pink-600'>
               <Check_StockIN_StockOUT_Product />
             </div>
-
-            <div className='flex items-center col-span-1 p-6 mt-2 bg-white border-t-2 border-pink-600'>
-              <ReportOpensale />
-            </div>
-
+            {(userRol === 'superadmin' || userRol === 'admin') && (
+              <div className='flex items-center col-span-1 p-6 mt-2 bg-white border-t-2 border-pink-600'>
+                <ReportOpensale />
+              </div>
+            )}
             <div className='flex items-center p-6 my-4 bg-white border-t-2 border-green-600 shadow-sm'>
               <Customer />
             </div>

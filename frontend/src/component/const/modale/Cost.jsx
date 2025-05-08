@@ -119,11 +119,8 @@ const Cost = ({ setIsOpenCash }) => {
     };
 
     return (
-        <div className='p-4'>
-            <div className="">
-                <h3 className="">ឈ្មោះម៉ាក់យីយោ</h3>
-            </div>
-            <div className="">
+        <div className="p-4 h-screen flex flex-col mb-20">
+            <div className="flex-grow overflow-y-auto">
                 <form class="" onSubmit={Createcost}>
                     <div className="">
                         <div class="grid gap-4 mb-4 grid-cols-2">
@@ -142,7 +139,6 @@ const Cost = ({ setIsOpenCash }) => {
                                             {items.type_names}
                                         </option>
                                     ))}
-
                                 </select>
                             </div>
                             <div class="col-span-1">
@@ -208,7 +204,7 @@ const Cost = ({ setIsOpenCash }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className='my-6 border-b-4 p-4'>
+                        <div className=' border-b-4 p-4'>
                             <h3 className='font-NotoSansKhmer font-bold'>បន្ថែមការទូទាត់</h3>
                         </div>
 
