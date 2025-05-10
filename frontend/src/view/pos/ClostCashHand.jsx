@@ -170,8 +170,6 @@ import { API_URL } from '../../service/api';
 import { motion } from 'framer-motion';
 import ModaleCost from "../../component/const/modale/Cost";
 
-
-
 const ClostCashHand = ({ setIsOpenCash }) => {
     const Navigator = useNavigate();
     const [userLoginNames, setUserLoginNames] = useState('');
@@ -209,7 +207,7 @@ const ClostCashHand = ({ setIsOpenCash }) => {
 
         try {
             await axios.put(`${API_URL}/api/opencash/close/${currentShift.id}`);
-            toast.success("Shift closed successfully!");
+            toast.success("បិទការលក់បានដោយជោគជ័យ!");
             setCurrentShift(null);
             // Navigator('/Dashboard')
             Navigator('/ReportClostCash')
@@ -227,37 +225,78 @@ const ClostCashHand = ({ setIsOpenCash }) => {
     };
 
     return (
-        <motion.div
-            className="fixed top-0 left-0 right-0 z-50 flex items-start justify-center w-full h-full bg-black bg-opacity-30"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.2 }}
-            onClick={handleOverlayClick}
-        >
-            <div>
-                <div className=" w-full max-w-xl mx-2 bg-white rounded shadow-md p-2 py-4 dark:bg-gray-700">
-                    <div className="">
-                        <h2 className="text-xl font-bold text-green-500 mb-4">កំពុងបើលការលក់</h2>
+        // <motion.div
+        //     className="fixed top-0 left-0 right-0 z-50 flex items-start justify-center w-full bg-black bg-opacity-30"
+        //     initial={{ opacity: 0, scale: 0.8 }}
+        //     animate={{ opacity: 1, scale: 1 }}
+        //     exit={{ opacity: 0, scale: 0.8 }}
+        //     transition={{ duration: 0.2 }}
+        //     onClick={handleOverlayClick}
+        // >
+        //     <div>
+        //         <div className="w-full max-w-2xl mx-2 bg-white rounded shadow-md p-2 my-6 dark:bg-gray-700">
+        //             <div className="">
+        //                 <h2 className="text-xl font-bold text-green-500 mb-4">កំពុងបើលការលក់</h2>
 
-                        {currentShift ? (
-                            <div className="text-gray-500">
-                                <p><strong>ការបើកពេល​ :</strong> {currentShift.shift}</p>
-                                <p><strong>ការបើកសមតុល្យ : </strong>  ${currentShift.opening_balance}</p>
-                                <button onClick={closeShift} className="w-full bg-red-500 text-white py-2 hover:bg-red-600 mt-4">
-                                    បិទការលក់
-                                </button>
-                            </div>
-                        ) : (
-                            <p className="text-gray-600">No active shift.</p>
-                        )}
-                        <div>
-                            <ModaleCost />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </motion.div>
+        //                 {currentShift ? (
+        //                     <div className="text-gray-500">
+        //                         <p><strong>ការបើកពេល​ :</strong> {currentShift.shift}</p>
+        //                         <p><strong>ការបើកសមតុល្យ : </strong>  ${currentShift.opening_balance}</p>
+        //                         <button onClick={closeShift} className="w-full bg-red-500 text-white py-2 hover:bg-red-600 mt-4">
+        //                             បិទការលក់
+        //                         </button>
+        //                     </div>
+        //                 ) : (
+        //                     <p className="text-gray-600">មិនមានទឹកប្រាក់បានបើក</p>
+        //                 )}
+        //                 <div className="h-[500px] overflow-hidden overflow-y-auto">
+        //                     <ModaleCost />
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </motion.div>
+
+        <motion.div
+  className="fixed top-0 left-0 right-0 z-50 flex items-start justify-center w-full h-full bg-black bg-opacity-40 backdrop-blur-sm px-4 py-10 overflow-auto hidden-scrollbar"
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={{ opacity: 1, scale: 1 }}
+  exit={{ opacity: 0, scale: 0.9 }}
+  transition={{ duration: 0.25 }}
+  onClick={handleOverlayClick}
+>
+  <div className="w-full max-w-3xl bg-white rounded-xl shadow-2xl overflow-hidden dark:bg-gray-800" onClick={(e) => e.stopPropagation()}>
+    <div className="p-6 space-y-6">
+      {/* Header */}
+      <div className="border-b pb-4">
+        <h2 className="text-2xl font-KhmerMoul text-green-600 text-center">កំពុងបើកការលក់</h2>
+      </div>
+
+      {/* Shift Info */}
+      {currentShift ? (
+        <div className="space-y-4 text-gray-700 dark:text-gray-200">
+          <p className="text-lg"><strong>🕒 ការបើកពេល៖</strong> {currentShift.shift}</p>
+          <p className="text-lg"><strong>💵 សមតុល្យចាប់ផ្តើម៖</strong> ${currentShift.opening_balance}</p>
+
+          <button
+            onClick={closeShift}
+            className="w-full bg-red-600 hover:bg-red-700 transition text-white py-2 rounded-lg font-semibold text-lg shadow"
+          >
+            បិទការលក់
+          </button>
+        </div>
+      ) : (
+        <p className="text-center text-gray-500 dark:text-gray-400">🙁 មិនមានការបើកទេ</p>
+      )}
+
+      {/* ModaleCost Scrollable Section */}
+      <div className="h-[400px] overflow-y-auto rounded-md border-t pt-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 dark:scrollbar-thumb-gray-600">
+        <ModaleCost />
+      </div>
+    </div>
+  </div>
+</motion.div>
+
     );
 };
 export default ClostCashHand

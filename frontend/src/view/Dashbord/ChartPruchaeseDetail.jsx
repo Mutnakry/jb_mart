@@ -62,8 +62,8 @@ const ChartPruchaeseDetail = () => {
         return [
             { product: 'ទឹកប្រាក់ចំណាយទិញផលិតផលសរុប $', total: totals.total_amount },
             { product: 'សរុបទឹកប្រាក់បញ្ចុំតម្លៃសរុប​ $', total: totals.total_discount },
-            { product: 'ចំនួនទឹកបប្រាក់ដែលបានបង់រួចសរុប', total: totals.total_pay },
-            { product: 'ទឹកប្រាក់ចំនួនសរុបដែលនៅជុំពាក់សរុប', total: totals.total_amoun_di },
+            { product: 'ចំនួនទឹកបប្រាក់ដែលបានបង់រួចសរុប $', total: totals.total_pay },
+            { product: 'ទឹកប្រាក់ចំនួនសរុបដែលនៅជុំពាក់សរុប $', total: totals.total_amoun_di },
         ];
     };
 
