@@ -168,7 +168,7 @@ const SupplierList = () => {
                 setSelectedsupplierId(null);
             } catch (err) {
                 console.error(err);
-                toast.error('សូមលោកព្យាយាមម្ដងទៀត !', { autoClose: 3000 });
+                toast.error('ឈ្មោះនេះនេះមិនអាចលុបបានទេព្រោះមាននៅក្នុងរបាយកាណ៍ហើយ !', { autoClose: 3000 });
                 // console.error(err);
                 // const errorMessage = err.response?.data?.message || 'សូមលោកព្យាយាមម្ដងទៀត !';
                 // toast.error(errorMessage, { autoClose: 3000 });

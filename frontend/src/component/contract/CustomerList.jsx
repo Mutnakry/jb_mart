@@ -166,7 +166,7 @@ const Supplier = () => {
             // console.error(err);
             // toast.error('សូមលោកព្យាយាមម្ដងទៀត!', { autoClose: 3000 });
             console.error(err);
-            const errorMessage = err.response?.data?.message || 'សូមលោកព្យាយាមម្ដងទៀត !';
+            const errorMessage = err.response?.data?.message || 'សូមលោកព្យាយាមម្ដងទៀត!';
             toast.error(errorMessage, { autoClose: 3000 });
         }
     };
@@ -190,7 +190,7 @@ const Supplier = () => {
                 setSelectedcustomerId(null);
             } catch (err) {
                 console.error(err);
-                toast.error('សូមលោកព្យាយាមម្ដងទៀត !', { autoClose: 3000 });
+                toast.error('ឈ្មោះនេះនេះមិនអាចលុបបានទេ !', { autoClose: 3000 });
             }
         }
     };

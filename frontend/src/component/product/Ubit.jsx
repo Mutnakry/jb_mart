@@ -124,7 +124,7 @@ const Unit = () => {
             } catch (err) {
                 console.error(err);
                 
-                toast.error('សូមលោកព្យាយាមម្ដងទៀត !', { autoClose: 3000 });
+                toast.error('ឈ្មោះនេះនេះមិនអាចលុបបានទេ !', { autoClose: 3000 });
             }
         }
     };
@@ -326,8 +326,8 @@ const Unit = () => {
                                 <MdClose className='text-2xl cursor-pointer' onClick={() => setIsDeleteModalOpen(false)} />
                             </div>
                             <div className="p-4 space-y-4">
-                                <p className="text-sm ">
-                                    Are you sure you want to delete this Unit? This action cannot be undone.
+                                <p className="text-md ">
+                                   តើអ្នកប្រាកដថាចង់លុបឯកតានេះទេ?
                                 </p>
                                 <div className="flex justify-end space-x-2">
                                     <button

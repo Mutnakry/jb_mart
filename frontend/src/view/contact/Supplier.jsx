@@ -12,9 +12,9 @@ const Customer = () => {
         {
             name: 'បញ្ជីឈ្មោះអ្នកផ្គត់ផ្គង់',
         },
-        {
-            name: 'ព័ត៍មានរបស់អ្នកផ្គត់ផ្គង់',
-        },
+        // {
+        //     name: 'ព័ត៍មានរបស់អ្នកផ្គត់ផ្គង់',
+        // },
     ];
 
     return (
@@ -43,9 +43,9 @@ const Customer = () => {
                                 <TabPanel className="p-4 border">
                                     <SupplierList />
                                 </TabPanel>
-                                <TabPanel className="p-4 border">
+                                {/* <TabPanel className="p-4 border">
                                     <SupplierInfo />
-                                </TabPanel>
+                                </TabPanel> */}
                             </TabPanels>
                         </TabGroup>
                     </div>

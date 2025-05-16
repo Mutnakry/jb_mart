@@ -90,7 +90,7 @@ const PamentList = () => {
         }
         try {
             await axios.put(`${API_URL}/api/payment_type/${selectedpayment_typeId}`, values);
-            toast.success('កែប្រែម៉ាក់យីយោបានដោយជោគជ័យ', { autoClose: 3000 });
+            toast.success('កែប្រែបានដោយជោគជ័យ', { autoClose: 3000 });
             getAllPayment();
             setIsUpdateModalOpen(false);
             setSelectedpayment_typeId(null);
@@ -119,7 +119,7 @@ const PamentList = () => {
                 setSelectedpayment_typeId(null);
             } catch (err) {
                 console.error(err);
-                toast.error('សូមលោកព្យាយាមម្ដងទៀត ស្មោះមានរួចហើយ  !', { autoClose: 3000 });
+                toast.error('ឈ្មោះនេះមិនអាចលុបបានទេ !', { autoClose: 3000 });
             }
         }
     };
@@ -134,7 +134,7 @@ const PamentList = () => {
         try {
             const res = await axios.post(`${API_URL}/api/payment_type`, values);
             console.log(res.data);
-            toast.success('បង្កើតម៉ាក់យីយោបានដោយជោគជ័យ ', { autoClose: 3000 });
+            toast.success('បង្កើតយោបានដោយជោគជ័យ ', { autoClose: 3000 });
             setpay_manes('');
             getAllPayment();
             setIsInsertModalOpen(false);

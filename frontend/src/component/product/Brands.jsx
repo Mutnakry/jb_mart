@@ -127,7 +127,7 @@ const Brands = () => {
             } catch (err) {
                 console.error(err);
                 setbrand_names('');
-                toast.error(`សូមលោកព្យាយាមម្ដងទៀត ម៉ាក់យីហោ ​« ${brand_names} ​»នេះមិនអាចលុបបានទេ  !`, { autoClose: 3000 });
+                toast.error(`ឈ្មោះនេះនេះមិនអាចលុបបានទេ ម៉ាក់យីហោ ​« ${brand_names} ​»   !`, { autoClose: 3000 });
             }
         }
     };

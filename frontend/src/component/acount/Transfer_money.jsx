@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { IoPrint } from 'react-icons/io5';
-import {API_URL} from '../../service/api'
+import { API_URL } from '../../service/api'
 
 const AccountDetailTransfer = () => {
     const [paymentDetails, setPaymentDetails] = useState([]);
@@ -49,15 +49,23 @@ const AccountDetailTransfer = () => {
         }, 1000); // Simulate a delay for filtering
     };
 
+    // const handlePrint = () => {
+    //     window.print();
+    // };
     const handlePrint = () => {
+        const printContents = document.getElementById('invoicesale').innerHTML;
+        const originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
         window.print();
+        document.body.innerHTML = originalContents;
+        window.location.reload(); // Refresh the page
     };
+
 
     return (
         <div>
             <div className=" bg-white print:bg-transparent dark:border-gray-700 print:bg-white print:p-0 print:shadow-none">
                 <div className="my-4 print:hidden flex justify-between">
-                   
                     <div className="flex justify-center space-x-2">
                         <div className="space-y-2">
                             <label htmlFor="startDate">ថ្ងៃទីចាប់ផ្ដើម</label>
@@ -91,7 +99,7 @@ const AccountDetailTransfer = () => {
                         </div>
                     </div>
                 </div>
-                <div className=" print:border-0 print:shadow-none">
+                <div className=" print:border-0 print:shadow-none" id='invoicesale'>
                     <table className="w-full border-collapse border border-gray-400">
                         <thead>
                             <tr className="dark:bg-gray-600 bg-blue-500">
@@ -112,12 +120,12 @@ const AccountDetailTransfer = () => {
                                         <td className="border border-gray-400 px-4 py-2">{detail.acc_numIn || 'NA'}</td>
                                         <td className="border border-gray-400 px-4 py-2">{detail.acc_nameOut || 'NA'}</td>
                                         <td className="border border-gray-400 px-4 py-2">{detail.acc_numOut || 'NA'}</td>
-                                        <td className="border border-gray-400 px-4 py-2">{detail.detail_balance } $</td>
-                                       
+                                        <td className="border border-gray-400 px-4 py-2">{detail.detail_balance} $</td>
+
                                         <td className="border border-gray-400 px-4 py-2">
                                             {detail.created_at ? new Date(detail.created_at).toLocaleDateString() : 'NA'}
                                         </td>
-                                        <td className="border border-gray-400 px-4 py-2">{detail.description }</td>
+                                        <td className="border border-gray-400 px-4 py-2">{detail.description}</td>
                                     </tr>
                                 ))
                             ) : (

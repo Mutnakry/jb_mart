@@ -29,6 +29,8 @@ bot.onText(/\/menu/, (msg) => {
         });
     });
 });
+
+
 //// 1 onclick prodct show ✅ Total sales qty for "Cambodia 2": 51
 bot.on("callback_query", (query) => {
     const chatId = query.message.chat.id;
@@ -41,7 +43,7 @@ bot.on("callback_query", (query) => {
             return bot.sendMessage(chatId, " Error fetching product data.");
         }
         if (results.length === 0 || results[0].total === null) {
-            return bot.sendMessage(chatId, `⚠️ រកមិនឃើញ "${productName}".`);
+            return bot.sendMessage(chatId, `រកមិនឃើញ "${productName}".`);
         }
         const totalqty = results[0].total;
         bot.sendMessage(chatId, `ផលិតផល ${productName} មាននៅក្នុងស្តុកចំនួន: ${totalqty}`);

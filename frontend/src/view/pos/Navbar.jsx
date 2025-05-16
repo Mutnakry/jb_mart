@@ -111,7 +111,7 @@ function Navbar() {
                         )}
                     </div>
 
-                    <div
+                    {/* <div
                         className="relative"
                         onMouseEnter={() => setIsHoveringCost(true)}
                         onMouseLeave={() => setIsHoveringCost(false)}
@@ -124,7 +124,7 @@ function Navbar() {
                                 <p>ម៉ាស៊ីនគិតលេខ</p>
                             </div>
                         )}
-                    </div>
+                    </div> */}
 
                     <div
                         className="relative"

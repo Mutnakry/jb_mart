@@ -353,6 +353,21 @@ const Cart = () => {
       return;
     }
 
+    // if (calculatedPayMoney || totalAmount >  newPayment || calculatedPayMoney && customer_ID === '1') {
+    //   toast.error('ឈ្មោះនេះមិនទាន់អាចទិញផលិតផលជុំពាក់បានទេ!', {
+    //     position: "top-center",
+    //     autoClose: 1000,
+    //   });
+    //   return;
+    // }
+
+    if ((calculatedPayMoney || totalAmount) > (newPayment || calculatedPayMoney) && customer_ID === '1') {
+      toast.error(`ឈ្មោះនេះមិនអាចទិញជុំពាក់បានទេ! ត្រូវបង់បន្ថែម`, {
+        position: "top-center",
+        autoClose: 2500,
+      });
+      return;
+    }
 
     // Prepare final order data
     const orderData = {
@@ -373,12 +388,14 @@ const Cart = () => {
 
     };
 
+
     // setIsSubmitting(true);
     console.log("Order Data:", orderData);
 
     // navigate('/index/invoce');
     // navigate('/index/pos/user');
     // clearCart();
+
     try {
       setIsSubmitting(true);
       const response = await fetch(`${API_URL}/api/order`, {
@@ -651,22 +668,22 @@ const Cart = () => {
         <div className='space-y-1'>
           <p>សរុប:</p>
           <p>$ {totalAmount.toFixed(2)}</p>
-          {finalTotal !== 0 && (
+          {/* {finalTotal !== 0 && (
             <>
               <p>{(totalAmount * exchangeRateKHR).toFixed(2)} រៀល</p>
               <p>{(totalAmount * (exchangeRateKHR / thbToKhrRateTHB)).toFixed(2)} បាត</p>
             </>
-          )}
+          )} */}
         </div>
         <div className='space-y-1 s'>
           <p>ការបញ្ចុះតំលៃ:</p>
           <p>${discountTotal.toFixed(2)}</p>
-          {discountTotal !== 0 && (
+          {/* {discountTotal !== 0 && (
             <>
               <p>{(discountTotal * exchangeRateKHR).toFixed(2)} រៀល</p>
               <p>{(discountTotal * (exchangeRateKHR / thbToKhrRateTHB)).toFixed(2)} បាត</p>
             </>
-          )}
+          )} */}
         </div>
         <div className='space-y-1 s'>
           <p>បន្ថែម:</p>
@@ -804,7 +821,7 @@ const Cart = () => {
                   <div className='w-3/4 p-3 bg-gray-200 drop-shadow'>
                     <div className="flex mb-4">
                       <div className="w-1/2 pr-2">
-                        <label for="method" className="block text-sm font-medium text-gray-700">ចំនួន: *</label>
+                        <label for="method" className="block text-sm font-medium text-gray-700">ចំនួនទឹកប្រាក់ត្រូវបង: *</label>
                         <input
                           type="number"
                           id="price"

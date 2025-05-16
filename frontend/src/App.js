@@ -85,7 +85,7 @@ import ProductWarranties from './component/product/product/ProductWarranties';
 import CreateDiscountProduct from './component/discountproduct/CreateDiscountProduct';
 import DiscountProductList from './component/discountproduct/DiscountProductList';
 import UpdateDiscountProduct from './component/discountproduct/UpdateDiscountProduct';
-// import UpdateDiscountProduct from './component/discountproduct/Update';
+import PrintDiscountProduct from './component/discountproduct/Print';
 
 
 import Order_List from './component/order/Order_List';
@@ -222,6 +222,7 @@ function App() {
               <Route path='/create_discount_product' element={<CreateDiscountProduct />} />
               <Route path='/discount_product' element={<DiscountProductList />} />
               <Route path='/create_discount_product/:id' element={<UpdateDiscountProduct />} />
+              <Route path='/discount_product/:id' element={<PrintDiscountProduct />} />
 
 
               {/* Product Discount */}

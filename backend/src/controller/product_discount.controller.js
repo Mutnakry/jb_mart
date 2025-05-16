@@ -247,14 +247,9 @@ exports.UpdateProductDiscount = async (req, res) => {
 
 
 
-
-
-
-
-
 exports.DeleteProductDiscount = (req, res) => {
     const { id } = req.params;
-    const sql = `DELETE FROM product_discount WHERE id = ?`;
+    const sql = `DELETE FROM product_discount WHERE product_discount_detail_id = ?`;
 
     db.query(sql, [id], (err, results) => {
         if (err) {

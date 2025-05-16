@@ -155,6 +155,7 @@ const ExchangRate = () => {
             <Navbar />
             <div className='Nav_bar'>
                 <div className=' Div_bar'>
+                    
                      <div className="">
                         <div className="flex items-center gap-2 py-5">
                             <RiContactsBook3Fill className="text-lg" />

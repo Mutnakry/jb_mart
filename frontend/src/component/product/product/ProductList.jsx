@@ -93,7 +93,7 @@ const Dashboard = () => {
                 setSelectedproductId(null);
             } catch (err) {
                 console.error(err);
-                toast.error('សូមលោកព្យាយាមម្ដងទៀត ស្មោះនេះមានមាននៅក្នុងរបាយការរួចហើយ', { autoClose: 3000 });
+                toast.error('ឈ្មោះនេះនេះមិនអាចលុបបានទេ ព្រោះមានមាននៅក្នុងរបាយការរួចហើយ', { autoClose: 3000 });
             }
         }
     };
@@ -207,7 +207,6 @@ const Dashboard = () => {
 
                     ) : (
                         <button to={'/createproduct'} className="opacity-50 cursor-not-allowed button_only_submit">+ បង្កើតផលិតផលថ្មី</button>
-
                     )}
                 </div>
 
@@ -264,12 +263,13 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="relative h-screen overflow-x-auto scrollbar-hidden">
+                <div className="relative h-screen overflow-x-auto">
                     <AnimatePresence>
                         <table className="min-w-full table-auto">
                             <thead className="text-white bg-blue-600/95">
                                 <tr className="font-bold font-NotoSansKhmer">
                                     <th className="px-4 py-2 ">លេខរៀង</th>
+                                    <th className="px-4 py-2 ">សកម្មភាព</th>
                                     <th className="px-4 py-2 whitespace-nowrap">រូបភាព</th>
                                     <th className="px-4 py-2 whitespace-nowrap">ឈ្មោះផលិតផល</th>
                                     <th className="px-4 py-2 ">តម្លៃទិញឯកតា</th>
@@ -285,9 +285,8 @@ const Dashboard = () => {
                                     <th className="px-4 py-2 ">ថ្ងៃផុតកំណត់</th>
                                     <th className="px-4 py-2 ">បន្ថែមដោយ</th>
                                     <th className="px-4 py-2 ">បង្កើត</th>
-
                                     <th className="px-4 py-2 ">ការណិពណ័នា</th>
-                                    <th className="px-4 py-2 ">សកម្មភាព</th>
+                                    {/* <th className="px-4 py-2 ">សកម្មភាព</th> */}
 
                                 </tr>
                             </thead>
@@ -309,6 +308,96 @@ const Dashboard = () => {
                                             transition={{ duration: 0.3 }}
                                             className="relative text-sm duration-100 font-NotoSansKhmer hover:scale-y-110">
                                             <td className="px-4 py-1 ">{index + 1}</td>
+                                            {/* <td className="relative px-2 py-1">
+                                                <button
+                                                    onClick={() => setShowRowActions(prev => (prev === product.id ? null : product.id))}
+                                                    className="px-4 py-1 bg-gray-300"
+                                                >
+                                                    សកម្មភាព
+                                                </button>
+
+                                                {showRowActions === product.id && (
+                                                    <div className="z-50 p-3 mt-1 text-center bg-white rounded-md drop-shadow w-44">
+                                                        {userRol === "superadmin" || userRol === "admin" ? (
+                                                            <>
+                                                                <button onClick={() => openDeleteModal(product)} className="block w-full px-4 py-2 text-left text-red-500 hover:bg-gray-100">
+                                                                    <MdDelete className="inline mr-2" />លុប
+                                                                </button>
+                                                                <Link to={`/updateproduct/${product.id}`} className="block w-full px-4 py-2 text-left text-blue-500 hover:bg-gray-100">
+                                                                    <FaPencilAlt className="inline mr-2" />កែប្រែ
+                                                                </Link>
+                                                                <Link to={`/product/${product.id}`} className="block w-full px-4 py-2 text-left text-green-500 hover:bg-gray-100">
+                                                                    <IoPrint className="inline mr-2" />បោះពុម្ព
+                                                                </Link>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <button className="block w-full px-4 py-2 text-left text-red-500 opacity-50 cursor-not-allowed">
+                                                                    <MdDelete className="inline mr-2" />លុប
+                                                                </button>
+                                                                <span className="block w-full px-4 py-2 text-left text-blue-500 opacity-50 cursor-not-allowed">
+                                                                    <FaPencilAlt className="inline mr-2" />កែប្រែ
+                                                                </span>
+                                                                <Link to={`/product/${product.id}`} className="block w-full px-4 py-2 text-left text-green-500 hover:bg-gray-100">
+                                                                    <IoPrint className="inline mr-2" />បោះពុម្ព
+                                                                </Link>
+                                                            </>
+                                                        )}
+                                                    </div>
+                                                )}
+
+                                            </td> */}
+                                            <td className="relative px-2 py-1">
+                                                <button
+                                                    onClick={() => setShowRowActions(prev => (prev === product.id ? null : product.id))}
+                                                    className="px-4 py-1 bg-gray-300"
+                                                >
+                                                    សកម្មភាព
+                                                </button>
+
+                                                {showRowActions === product.id && (
+                                                    <div className="absolute left-0 z-50 mt-1 w-44 p-3 text-center bg-white rounded-md shadow-lg">
+                                                        {userRol === "superadmin" || userRol === "admin" ? (
+                                                            <>
+                                                                <button
+                                                                    onClick={() => openDeleteModal(product)}
+                                                                    className="block w-full px-4 py-2 text-left text-red-500 hover:bg-gray-100"
+                                                                >
+                                                                    <MdDelete className="inline mr-2" />លុប
+                                                                </button>
+                                                                <Link
+                                                                    to={`/updateproduct/${product.id}`}
+                                                                    className="block w-full px-4 py-2 text-left text-blue-500 hover:bg-gray-100"
+                                                                >
+                                                                    <FaPencilAlt className="inline mr-2" />កែប្រែ
+                                                                </Link>
+                                                                <Link
+                                                                    to={`/product/${product.id}`}
+                                                                    className="block w-full px-4 py-2 text-left text-green-500 hover:bg-gray-100"
+                                                                >
+                                                                    <IoPrint className="inline mr-2" />បោះពុម្ព
+                                                                </Link>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <button className="block w-full px-4 py-2 text-left text-red-500 opacity-50 cursor-not-allowed">
+                                                                    <MdDelete className="inline mr-2" />លុប
+                                                                </button>
+                                                                <span className="block w-full px-4 py-2 text-left text-blue-500 opacity-50 cursor-not-allowed">
+                                                                    <FaPencilAlt className="inline mr-2" />កែប្រែ
+                                                                </span>
+                                                                <Link
+                                                                    to={`/product/${product.id}`}
+                                                                    className="block w-full px-4 py-2 text-left text-green-500 hover:bg-gray-100"
+                                                                >
+                                                                    <IoPrint className="inline mr-2" />បោះពុម្ព
+                                                                </Link>
+                                                            </>
+                                                        )}
+                                                    </div>
+                                                )}
+                                            </td>
+
                                             <td>
                                                 {product.image ? (
                                                     <div className="flex items-center justify-center h-12">
@@ -363,16 +452,26 @@ const Dashboard = () => {
                                             <td className="px-4 py-1 whitespace-nowrap">{product.exclude_tax} $</td>
                                             <td className="px-4 py-1 whitespace-nowrap">{product.include_tax} $</td>
                                             <td className="px-4 py-1 whitespace-nowrap">{product.discount} $</td>
-                                            <td className="px-4 py-1">{product.qty} {product.unit_names}</td>
+
+                                            <td className="px-4 py-1">
+                                                <button className=''>
+                                                    {product.mg_stock === 'enable' ? (
+                                                        <span  > {product.qty} {product.unit_names}</span>
+                                                    ) : (
+                                                        <span className=' text-blue-700 text-xs'>មិនគ្រប់គ្រងស្តុក</span>
+                                                    )}
+                                                </button>
+                                            </td>
+
                                             <td className="px-4 py-1 ">{product.product_type || 'N/A'}</td>
                                             <td className="px-4 py-1 ">{product.cat_names || 'N/A'}</td>
                                             <td className="px-4 py-1">{product.brand_names || 'N/A'}</td>
                                             <td className="px-4 py-1 whitespace-nowrap">
                                                 <button className=''>
                                                     {product.mg_stock === 'enable' ? (
-                                                        <span >គ្រប់គ្រងស្តុក</span>
+                                                        <span className='text-pink-700' >គ្រប់គ្រងស្តុក</span>
                                                     ) : (
-                                                        <span >មិនគ្រប់គ្រងស្តុក</span>
+                                                        <span className=' text-blue-700'>មិនគ្រប់គ្រងស្តុក</span>
                                                     )}
                                                 </button>
                                             </td>
@@ -431,8 +530,7 @@ const Dashboard = () => {
                                             <td className="px-4 py-1 ">
                                                 <span>{product.description || 'មិនមាន'}</span>
                                             </td>
-                                            <td className="relative px-4 py-1">
-                                                {/* Button to Toggle   */}
+                                            {/* <td className="relative px-4 py-1">
                                                 <button
                                                     onClick={() => setShowRowActions(prev => (prev === product.id ? null : product.id))}
                                                     className="px-4 py-1 bg-gray-300"
@@ -470,7 +568,7 @@ const Dashboard = () => {
                                                     </div>
                                                 )}
 
-                                            </td>
+                                            </td> */}
                                         </motion.tr>
                                     ))}
                                 </tbody>

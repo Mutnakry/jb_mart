@@ -131,7 +131,7 @@ const CustomerGroup = () => {
                 setSelectedgroup_customerId(null);
             } catch (err) {
                 console.error(err);
-                toast.error('សូមលោកព្យាយាមម្ដងទៀត !', { autoClose: 3000 });
+                toast.error('ឈ្មោះនេះនេះមិនអាចលុបបានទេ !', { autoClose: 3000 });
             }
         }
     };

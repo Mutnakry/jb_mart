@@ -165,7 +165,7 @@ const ProductWarranties = () => {
             <p className="font-bold font-NotoSansKhmer">តារាងបញ្ជី</p>
           </div>
           <div className="flex justify-end">
-            <button className="button_only_submit" onClick={openInsertModal}>+ បង្កើតគណនីថ្មី</button>
+            <button className="button_only_submit" onClick={openInsertModal}>+ បង្កើតផលិតផលថ្មី</button>
           </div>
           <div className='pb-4'>
             <input
@@ -215,12 +215,12 @@ const ProductWarranties = () => {
                           >
                             <FaPencilAlt className="text-white " /> 
                           </button>
-                          <button
+                          {/* <button
                             onClick={() => openDeleteModal(customer)}
                             className="flex p-2 text-xs text-white bg-red-500"
                           >
                             <MdDelete className="text-white" />
-                          </button>
+                          </button> */}
                         </td>
                       </motion.tr>
                     ))}
@@ -277,7 +277,7 @@ const ProductWarranties = () => {
                           onChange={e => setDuration(e.target.value)}
                           id="price"
                           className="input_text "
-                          placeholder="លេខគណនី" required
+                          placeholder="រយៈពេល" required
                         />
                       </div>
                       <div className="col-span-1">

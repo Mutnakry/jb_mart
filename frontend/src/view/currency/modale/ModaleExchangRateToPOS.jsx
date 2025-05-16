@@ -6,7 +6,7 @@ import axios from "axios";
 import TableCurrency from "../TableCurrency";
 import { motion } from 'framer-motion';
 import { MdClose } from 'react-icons/md';
-import {API_URL} from '../../../service/api'
+import { API_URL } from '../../../service/api'
 
 
 const ModaleExchangRateToPOS = ({ setIsModalExchangRate }) => {
@@ -177,131 +177,97 @@ const ModaleExchangRateToPOS = ({ setIsModalExchangRate }) => {
                         onClick={() => setIsModalExchangRate(false)}
                     />
                 </div>
-                <div className="">
-                    {/* Currency Selector */}
-                    <div className="mt-5 flex gap-5 items-center pb-8">
-                        <div>
-                            <label htmlFor="fromCurrencySelect" className="font-NotoSansKhmer font-bold text-lg">អត្រាប្តូប្រាក់ ពី</label>
-                            <select
-                                id="fromCurrencySelect"
-                                value={fromCurrency}
-                                onChange={(e) => setFromCurrency(e.target.value)}
-                                className="input_text font-NotoSansKhmer font-bold xl:w-[350px] w-[280px] block"
-                            >
-                                <option value="រៀល">Khmer Riel (រៀល)</option>
-                                <option value="ដុល្លារ">US Dollar (ដុល្លារ)</option>
-                                <option value="បាត">Thai Baht (បាត)</option>
-                            </select>
-                        </div>
-                        <div><GoArrowRight className="w-10 h-10 translate-y-3 text-gray-600" /></div>
-                        <div>
-                            <label htmlFor="toCurrencySelect" className="font-NotoSansKhmer font-bold text-lg">ទៅ</label>
-                            <select
-                                id="toCurrencySelect"
-                                value={toCurrency}
-                                onChange={(e) => setToCurrency(e.target.value)}
-                                className="input_text font-NotoSansKhmer font-bold xl:w-[350px] w-[280px]  block"
-                            >
-                                {getToCurrencyOptions().map(option => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                {/* 💱 Currency Selectors - Cute Form Style */}
+                <div className="flex flex-wrap gap-8 items-start pb-10 bg-blue-50 p-6 rounded-xl shadow-inner border border-blue-200">
+                    <div className="space-y-2">
+                        <label className="font-NotoSansKhmer text-blue-900 font-bold text-lg">📥 ប្តូរ​ពី</label>
+                        <select
+                            value={fromCurrency}
+                            onChange={(e) => setFromCurrency(e.target.value)}
+                            className="input_text font-NotoSansKhmer font-bold w-[260px] rounded-xl border border-blue-300 p-3 text-blue-800 shadow-sm"
+                        >
+                            <option value="រៀល">Khmer Riel (រៀល)</option>
+                            <option value="ដុល្លារ">US Dollar (ដុល្លារ)</option>
+                            <option value="បាត">Thai Baht (បាត)</option>
+                        </select>
                     </div>
 
-
-                    {/* From Currency Input */}
-                    <div className="flex items-center gap-10">
-                        <div className="relative w-full space-y-2">
-                            <label htmlFor="fromCurrency" className="font-NotoSansKhmer font-bold text-lg">អត្រាប្តូប្រាក់ ពី ប្រាក់{fromCurrency}</label>
-                            <input
-                                type="number"
-                                id="fromCurrency"
-                                className="input_text"
-                                placeholder={fromCurrency}
-                                value={inputValue}
-                                onChange={handleInputChange}
-                            />
-                            <div className="absolute right-0 p-2.5 px-5 bg-blue-500 top-6">
-                                <p className="text-white">{fromCurrency}</p>
-                            </div>
-                        </div>
-
-                        {/* Switch Currencies Button */}
-                        <div className="mt-5">
-                            <TbSwitch3
-                                className="w-10 h-10 text-blue-600 cursor-pointer hover:text-blue-800"
-                                onClick={handleSwitch}
-                            />
-                        </div>
-
-                        <div className="relative w-full space-y-2">
-                            <label htmlFor="toCurrency" className="font-NotoSansKhmer font-bold text-lg">ទៅ  ប្រាក់{toCurrency}</label>
-                            <input
-                                type="number"
-                                id="toCurrency"
-                                readOnly
-                                className="bg-gray-100 input_text"
-                                placeholder={toCurrency}
-                                value={outputValue}
-                            />
-                            <div className="absolute right-0 p-2.5 px-5 bg-blue-500 top-6">
-                                <p className="text-white">{toCurrency}</p>
-                            </div>
-                        </div>
-                        <div className="relative w-full space-y-2">
-                            <label htmlFor="orderCurrency" className="font-NotoSansKhmer font-bold text-lg">ប្រាក់{orderOutCurrency}</label>
-                            <input
-                                type="number"
-                                id="orderCurrency"
-                                readOnly
-                                className="bg-gray-100 input_text"
-                                placeholder={orderOutCurrency}
-                                value={orderOutputValue}
-                            />
-                            <div className="absolute right-0 p-2.5 px-5 bg-blue-500 top-6">
-                                <p className="text-white">{orderOutCurrency}</p>
-                            </div>
-                        </div>
+                    <div className="flex items-end h-[90px]">
+                        <GoArrowRight className="w-10 h-10 text-blue-600 animate-pulse" />
                     </div>
-                    <div className="grid xl:grid-cols-2 gap-10 md:grid-cols-1 border-t-4 justify-between mt-10 shadow-lg p-2 pr-8 border-blue-700 rounded-lg">
-                    <div>
-                            <TableCurrency />
-                        </div>
-                        <div className=" bg-blue-950 rounded-lg">
-                            <table className="min-w-full border-collapse border border-gray-200">
-                                <thead>
-                                    <tr className="bg-gray-100">
-                                        <th className="border border-gray-300 px-4 py-2">រូបិយបណ្ណ</th>
-                                        <th className="border border-gray-300 px-4 py-2">អត្រាប្តូប្រាក់</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {exchangeRateStatements.map((statement, index) => (
-                                        <tr key={index} className="hover:bg-gray-50 text-2xl">
 
-                                            <td className="border border-gray-300 px-4 text-center text-yellow-300 py-2">
-                                                <div className="flex space-x-12 items-center">
-                                                    <span>   {statement.fromCurrency}</span>
-                                                    <span><img className="h-8" src="https://cdn.pixabay.com/animation/2022/10/06/13/44/13-44-02-515_512.gif" alt="" />
-                                                    </span>
-                                                    <span>   {statement.toCurrency}</span>
-                                                </div>
-                                            </td>
-                                            <td className="border border-gray-300 text-yellow-300 px-4 py-2">
-                                                {statement.rate}
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-
+                    <div className="space-y-2">
+                        <label className="font-NotoSansKhmer text-blue-900 font-bold text-lg">📤 ទៅ</label>
+                        <select
+                            value={toCurrency}
+                            onChange={(e) => setToCurrency(e.target.value)}
+                            className="input_text font-NotoSansKhmer font-bold w-[260px] rounded-xl border border-blue-300 p-3 text-blue-800 shadow-sm"
+                        >
+                            {getToCurrencyOptions().map(option => (
+                                <option key={option.value} value={option.value}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                 </div>
 
+                {/* 💸 Exchange Input & Output - Cute Inputs */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+                    {/* Input Amount */}
+                    <div className="relative">
+                        <label className="font-NotoSansKhmer text-blue-900 font-bold mb-1 block">ប្រាក់ {fromCurrency}</label>
+                        <input
+                            type="number"
+                            value={inputValue}
+                            onChange={handleInputChange}
+                            className="input_text w-full p-3 rounded-xl border border-blue-300 shadow-inner text-blue-800 font-bold"
+                            placeholder={`បញ្ចូលប្រាក់ ${fromCurrency}`}
+                        />
+                        <span className="absolute right-4 top-10 bg-blue-600 text-white rounded-full px-4 py-1 text-sm shadow-md">
+                            {fromCurrency}
+                        </span>
+                    </div>
+
+                    {/* Switch Icon */}
+                    <div className="flex items-center justify-center pt-6">
+                        <TbSwitch3
+                            className="w-12 h-12 text-pink-500 cursor-pointer hover:text-pink-700 transition duration-300 ease-in-out transform hover:scale-110"
+                            onClick={handleSwitch}
+                            title="Switch Currency"
+                        />
+                    </div>
+
+                    {/* Output Amount */}
+                    <div className="relative">
+                        <label className="font-NotoSansKhmer text-blue-900 font-bold mb-1 block">ទៅប្រាក់ {toCurrency}</label>
+                        <input
+                            type="number"
+                            readOnly
+                            value={outputValue}
+                            className="input_text w-full p-3 rounded-xl border border-gray-300 bg-gray-100 text-blue-800 font-semibold shadow-inner"
+                            placeholder={`ចេញជា ${toCurrency}`}
+                        />
+                        <span className="absolute right-4 top-10 bg-blue-600 text-white rounded-full px-4 py-1 text-sm shadow-md">
+                            {toCurrency}
+                        </span>
+                    </div>
+
+                    {/* Output Order Currency */}
+                    <div className="relative col-span-full lg:col-span-2">
+                        <label className="font-NotoSansKhmer text-blue-900 font-bold mb-1 block">ប្រាក់ {orderOutCurrency}</label>
+                        <input
+                            type="number"
+                            readOnly
+                            value={orderOutputValue}
+                            className="input_text w-full p-3 rounded-xl border border-gray-300 bg-gray-100 text-blue-800 font-semibold shadow-inner"
+                            placeholder={`បង្ហាញជា ${orderOutCurrency}`}
+                        />
+                        <span className="absolute right-4 top-10 bg-blue-600 text-white rounded-full px-4 py-1 text-sm shadow-md">
+                            {orderOutCurrency}
+                        </span>
+                    </div>
+                </div>
             </div>
         </motion.div>
     );

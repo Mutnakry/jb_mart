@@ -234,7 +234,7 @@ function CreateDiscountProduct() {
                                 </div>
 
                                 <div class="space-y-2">
-                                    <label className="font-NotoSansKhmer font-bold">ឈ្មោះ: *</label>
+                                    <label className="font-NotoSansKhmer font-bold">ថ្ងៃចាប់ផ្ដើម: *</label>
                                     <input
                                         type="date"
                                         value={startDiscount}
@@ -247,7 +247,7 @@ function CreateDiscountProduct() {
                                     />
                                 </div>
                                 <div class="space-y-2">
-                                    <label className="font-NotoSansKhmer font-bold">ឈ្មោះ: *</label>
+                                    <label className="font-NotoSansKhmer font-bold">ថ្ងៃបញ្ចប់: *</label>
                                     <input
                                         type="date"
                                         value={endDiscount}

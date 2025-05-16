@@ -338,7 +338,7 @@ const Dashboard = () => {
                                 </td>
                                 <td className="font-bold px-4 py-1">
                                     {purchases
-                                        .reduce((total, customer) => total + ((Number(customer.total_amount) - (Number(customer.amount_pay))) || 0), 0)
+                                        .reduce((total, customer) => total + ((Number(customer.total_amount) - ((Number(customer.amount_pay)) + (Number(customer.amount_discount)))) || 0), 0)
                                         .toLocaleString('en-US', {
                                             style: 'decimal',
                                             minimumFractionDigits: 2,

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2025 at 04:37 AM
+-- Generation Time: Feb 25, 2025 at 02:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -114,9 +114,9 @@ CREATE TABLE `acount` (
 --
 
 INSERT INTO `acount` (`id`, `acc_names`, `bank_id`, `acc_num`, `balance`, `description`, `user_at`, `user_update`, `create_at`, `update_at`, `delete_at`, `status`) VALUES
-(2, 'Nakry', 2, '111220008776', 27.79, NULL, 'admin', 'admin', '2025-02-26 03:58:39', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'on'),
+(2, 'Nakry', 2, '111220008776', 22.29, NULL, 'admin', 'admin', '2025-02-16 04:54:46', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'on'),
 (4, 'ស្រីស្អាត', 3, '1000223888331', 110.00, 'លក់លុះខ្ស័យ', 'admin', 'admin', '2025-01-29 02:30:11', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'off'),
-(5, 'Sok thin', 6, '1100093773733', 1987.00, 'លក់ទាល់តែអស់បានឈប់', 'admin', 'superadmin', '2025-05-16 02:29:54', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'on');
+(5, 'កញ្ញាបុផ្ផាស្រស់', 6, '1100093773733', 2020.00, 'លក់ទាល់តែអស់បានឈប់', 'admin', 'user', '2025-02-13 15:51:39', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'on');
 
 -- --------------------------------------------------------
 
@@ -165,21 +165,8 @@ CREATE TABLE `brands` (
 INSERT INTO `brands` (`id`, `brand_names`, `description`, `create_at`, `update_at`, `delete_at`) VALUES
 (1, 'LV', 'ថ្មី', '2024-10-18 04:25:59', '2024-10-18 04:25:59', NULL),
 (4, 'Gatsby', '', '2024-10-18 05:17:03', '2024-10-18 05:17:20', NULL),
-(5, 'ភេសជ្ជៈ', '', '2024-10-23 05:55:39', '2024-10-23 05:56:23', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cash_withdrawals`
---
-
-CREATE TABLE `cash_withdrawals` (
-  `id` int(11) NOT NULL,
-  `cashier_id` int(11) NOT NULL,
-  `amount` decimal(10,2) NOT NULL,
-  `reason` varchar(255) DEFAULT NULL,
-  `transaction_date` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+(5, 'ភេសជ្ជៈ', '', '2024-10-23 05:55:39', '2024-10-23 05:56:23', NULL),
+(6, 'ទឹកអប់', '', '2024-10-23 05:57:19', '2024-10-23 06:02:47', NULL);
 
 -- --------------------------------------------------------
 
@@ -204,6 +191,7 @@ INSERT INTO `category` (`id`, `cat_names`, `detail`, `create_at`, `update_at`, `
 (1, 'ក្រែម', '2', '2024-10-16 06:34:15', '2024-10-16 08:33:39', NULL),
 (4, 'ស្រាបៀដប', '1', '2024-10-16 08:16:37', '2024-10-23 05:25:20', NULL),
 (5, 'ស្ព្រាយបាញ់ខ្លួន', '1', '2024-10-16 08:17:01', '2024-10-17 15:47:18', NULL),
+(7, 'ឡេលាបខ្លួន', '', '2024-10-16 08:24:35', '2024-10-16 08:42:23', NULL),
 (8, 'ស្រាបៀកំប៉ុង', 'មានរស់ជាតិឆ្ងុយខ្ងាញ់', '2024-10-16 08:41:32', '2024-10-23 09:20:42', NULL),
 (9, NULL, NULL, '2024-10-18 05:14:37', '2024-10-18 05:14:37', NULL),
 (11, 'Frute', '', '2024-12-29 04:06:30', '2024-12-29 04:06:30', NULL);
@@ -218,7 +206,6 @@ CREATE TABLE `cost` (
   `id` int(11) NOT NULL,
   `cost_type_id` int(11) DEFAULT NULL,
   `account_id` int(11) DEFAULT NULL,
-  `opening_id` int(11) DEFAULT NULL,
   `tax` int(10) DEFAULT 0,
   `price` int(10) DEFAULT 0,
   `payment` int(10) DEFAULT 0,
@@ -237,13 +224,12 @@ CREATE TABLE `cost` (
 -- Dumping data for table `cost`
 --
 
-INSERT INTO `cost` (`id`, `cost_type_id`, `account_id`, `opening_id`, `tax`, `price`, `payment`, `dob`, `decription`, `interval`, `interval_type`, `user_at`, `user_update`, `create_at`, `update_at`, `delete_at`) VALUES
-(13, 3, NULL, NULL, 10, 200, 200, '2024-12-17', NULL, 1, 'ខែ', 'admin', 'admin', '2024-12-17 07:26:19', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(14, 3, NULL, NULL, 0, 10, 10, '2024-12-18', NULL, 1, 'ថ្ងៃ', 'admin', 'admin', '2025-01-31 16:17:07', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(15, 1, NULL, NULL, 1, 10, 10, '2024-12-17', NULL, 1, 'ថ្ងៃ', 'admin', 'admin', '2024-12-17 08:01:51', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(16, 2, 5, 5, 1, 33, 3, '2025-02-05', NULL, 1, 'ថ្ងៃ', 'admin', 'admin', '2025-03-17 05:48:49', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(17, 2, NULL, 5, 0, 120, 0, '2025-01-06', NULL, 1, 'ឆ្នាំ', 'admin', 'admin', '2025-03-16 17:16:30', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 3, NULL, NULL, 0, 6, 0, '2025-03-17', NULL, 1, 'ថ្ងៃ', 'admin', NULL, '2025-03-17 03:43:49', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `cost` (`id`, `cost_type_id`, `account_id`, `tax`, `price`, `payment`, `dob`, `decription`, `interval`, `interval_type`, `user_at`, `user_update`, `create_at`, `update_at`, `delete_at`) VALUES
+(13, 3, NULL, 10, 200, 200, '2024-12-17', NULL, 1, 'ខែ', 'admin', 'admin', '2024-12-17 07:26:19', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 3, NULL, 0, 10, 10, '2024-12-18', NULL, 1, 'ថ្ងៃ', 'admin', 'admin', '2025-01-31 16:17:07', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 1, NULL, 1, 10, 10, '2024-12-17', NULL, 1, 'ថ្ងៃ', 'admin', 'admin', '2024-12-17 08:01:51', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 2, 5, 1, 33, 3, '2025-02-05', NULL, 1, 'ថ្ងៃ', 'admin', 'admin', '2025-02-04 16:56:49', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 2, NULL, 0, 1200000, 0, '2025-01-06', NULL, 1, 'ឆ្នាំ', 'admin', 'admin', '2025-01-30 04:59:04', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -266,9 +252,7 @@ CREATE TABLE `cost_type` (
 INSERT INTO `cost_type` (`id`, `type_names`, `create_at`, `update_at`, `delete_at`) VALUES
 (1, 'បង់ភ្លើង', '2024-10-20 05:02:12', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 'ថ្លៃសម្រាម', '2024-10-20 05:11:34', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'ថ្លៃទឹក', '2024-10-20 05:03:28', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 'Coffee', '2025-03-17 04:16:53', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'បាយ', '2025-03-17 04:17:04', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(3, 'ថ្លៃទឹក', '2024-10-20 05:03:28', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -312,7 +296,7 @@ CREATE TABLE `currency_rates` (
 --
 
 INSERT INTO `currency_rates` (`id`, `name`, `rate`, `created_at`, `updated_at`) VALUES
-(1, 'KHR', 4100.0000, '2024-12-06 02:52:31', '2025-04-08 08:40:17'),
+(1, 'KHR', 4200.0000, '2024-12-06 02:52:31', '2025-02-15 04:24:36'),
 (2, 'THB', 120.0000, '2024-12-06 02:52:31', '2024-12-06 04:41:57'),
 (3, 'USD', 1.0000, '2024-12-06 02:52:31', '2024-12-06 04:14:47');
 
@@ -345,12 +329,12 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `contect_type`, `group_id`, `contect_phone`, `mobile_phone`, `business_names`, `full_names`, `half_names`, `description`, `email`, `user_at`, `user_update`, `create_at`, `update_at`, `delete_at`) VALUES
-(1, 'ផ្ទាល់ខ្លួន', NULL, NULL, '0965752080', NULL, 'អតិថិជនទូទៅ', NULL, 'ហាមលុប( Walk-In Customer​)', NULL, '', '', '2024-10-14 03:50:08', '2025-02-25 14:03:50', NULL),
+(1, 'ផ្ទាល់ខ្លួន', NULL, NULL, '0965752080', NULL, 'Walk-In Customer', NULL, 'ហាមលុប( Walk-In Customer​)', NULL, '', '', '2024-10-14 03:50:08', '2024-10-24 17:53:20', NULL),
 (3, 'អជីវកម្ម', NULL, '123456789', NULL, 'ហាងបាយ', NULL, NULL, NULL, 'nakry@example.com', 'admin', 'admin', '2024-10-21 15:12:06', '2024-10-21 17:54:35', NULL),
 (8, 'ផ្ទាល់ខ្លួន', 2, '9654322', '098765', NULL, 'nakry', 'Vp', 'yes', 'lv@gmail.com', 'admin', 'User', '2024-10-21 17:34:12', '2025-02-05 06:59:33', NULL),
-(9, 'អជីវកម្ម', NULL, '០០៩៩៨៧៦៦៥៥៤', NULL, 'ហាងលក់កុំព្យូទ័រ', NULL, NULL, NULL, NULL, 'admin', 'admin', '2024-10-21 17:34:49', '2025-03-09 15:49:40', NULL),
+(9, 'អជីវកម្ម', NULL, '០០៩៩៨៧៦៦៥៥៤', NULL, 'ហាងលក់កុំព្យូទ័រ', NULL, NULL, NULL, NULL, 'admin', NULL, '2024-10-21 17:34:49', '2024-10-21 17:34:49', NULL),
 (10, 'ផ្ទាល់ខ្លួន', 3, NULL, '0098765431234', '', 'KAKA FoodBall', 'kf', NULL, NULL, 'admin', 'admin', '2024-10-25 10:10:43', '2024-11-12 05:57:50', NULL),
-(11, 'ផ្ទាល់ខ្លួន', NULL, NULL, '០៩៦៥៦៧៥២០៨០', '', 'មុត ណាគ្រី', NULL, NULL, NULL, 'admin', 'admin', '2024-12-17 09:28:43', '2025-03-12 03:47:15', NULL);
+(11, 'ផ្ទាល់ខ្លួន', NULL, NULL, '០៩៦៥៦៧៥២០៨០', '', 'មុត ណាគ្រី', NULL, NULL, NULL, 'admin', 'User', '2024-12-17 09:28:43', '2025-02-10 13:52:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -379,7 +363,7 @@ CREATE TABLE `customer_payment` (
 --
 
 INSERT INTO `customer_payment` (`id`, `customer_id`, `order_detail_id`, `account_id`, `balance`, `balance_usd`, `cash_change`, `type_currency`, `description`, `user_at`, `user_update`, `created_at`, `updated_at`) VALUES
-(2, 11, 12, NULL, 1.00, 1.00, 1.00, 'usd', 'Payment for order 12', 'admin', NULL, '2025-02-07 06:48:27', '2025-02-27 08:15:15'),
+(2, 11, 12, NULL, 1.00, 0.00, 1.00, 'usd', 'Payment for order 12', 'admin', NULL, '2025-02-07 06:48:27', '2025-02-07 06:51:39'),
 (4, 10, 10, NULL, 5.00, 0.15, 35.00, 'thb', '', 'admin', NULL, '2025-02-14 15:30:40', '2025-02-14 15:30:40'),
 (5, 10, 10, NULL, 5.00, 0.15, 35.00, 'thb', '', 'admin', NULL, '2025-02-14 15:33:39', '2025-02-14 15:33:39'),
 (6, 10, 10, NULL, 5.00, 0.15, 35.00, 'thb', '', 'admin', NULL, '2025-02-14 15:46:55', '2025-02-14 15:46:55'),
@@ -389,9 +373,7 @@ INSERT INTO `customer_payment` (`id`, `customer_id`, `order_detail_id`, `account
 (10, 10, 10, NULL, 5.00, 0.15, 35.00, 'thb', '', 'admin', NULL, '2025-02-14 16:28:59', '2025-02-14 16:28:59'),
 (11, 10, 10, 2, 5.00, 0.15, 35.00, 'thb', '', 'admin', NULL, '2025-02-14 16:30:39', '2025-02-14 16:30:39'),
 (13, 1, 13, NULL, 1.00, 1.00, 1.00, 'usd', '', 'admin', NULL, '2025-02-14 18:27:15', '2025-02-14 18:27:15'),
-(14, 10, 10, 2, 5.00, 0.14, 35.00, 'thb', '', 'admin', NULL, '2025-02-15 08:24:42', '2025-03-18 14:17:15'),
-(16, 1, 22, NULL, 0.91, 0.91, 1.00, 'usd', '', 'admin', NULL, '2025-05-10 04:14:36', '2025-05-10 04:14:36'),
-(17, 10, 10, NULL, 5.00, 0.15, 35.00, 'thb', '', 'SuperAdmin', NULL, '2025-05-15 14:34:38', '2025-05-15 14:34:38');
+(14, 10, 10, 2, 5.00, 0.14, 35.00, 'thb', '', 'admin', NULL, '2025-02-15 08:24:42', '2025-02-15 08:24:42');
 
 --
 -- Triggers `customer_payment`
@@ -467,7 +449,7 @@ CREATE TABLE `group_customer` (
 INSERT INTO `group_customer` (`id`, `group_names`, `discount`, `detail`, `user_at`, `user_update`, `create_at`, `update_at`, `delete_at`) VALUES
 (1, 'មិនមាន', 0.00, 'ហាមលុប', 'supperadmin', NULL, '2024-10-14 03:46:27', '2024-10-21 09:04:14', NULL),
 (2, 'VIP', 10.00, NULL, 'admin', 'admin', '2024-10-21 08:56:42', '2025-02-05 07:24:49', NULL),
-(3, 'Happy Student', 1.00, 'លកើដោយណាគ្រី', 'admin', 'SuperAdmin', '2024-10-21 08:58:24', '2025-05-11 17:36:12', NULL),
+(3, 'Happy Student', 1.00, 'លកើដោយណាគ្រី', 'admin', 'admin', '2024-10-21 08:58:24', '2025-02-06 13:38:59', NULL),
 (4, 'Foodball', 2.00, '', 'admin', 'admin', '2024-10-21 13:49:31', '2024-10-21 13:55:15', NULL);
 
 -- --------------------------------------------------------
@@ -512,27 +494,14 @@ CREATE TABLE `order` (
 
 INSERT INTO `order` (`id`, `customer_id`, `order_detail_id`, `product_id`, `qty`, `price`, `discount`, `total`, `date_by`, `user_at`, `user_update`, `create_at`, `update_at`, `delete_at`) VALUES
 (11, 1, 8, 1, 2, 6.00, 0.50, 11.00, NULL, 'admin', NULL, '2025-02-06 13:27:03', '2025-02-06 13:27:03', NULL),
-(12, 1, 9, 2, 1, 6.00, 1.00, 5.00, NULL, 'admin', NULL, '2025-02-06 13:30:06', '2025-03-13 08:02:59', NULL),
+(12, 1, 9, 2, 1, 6.00, 1.00, 5.00, NULL, 'admin', NULL, '2025-02-06 13:30:06', '2025-02-06 13:30:06', NULL),
 (13, 10, 10, 2, 1, 6.00, 1.00, 5.00, NULL, 'admin', NULL, '2025-02-06 15:17:56', '2025-02-06 15:17:56', NULL),
 (14, 1, 11, 1, 2, 6.00, 0.50, 11.00, NULL, 'admin', NULL, '2025-02-06 15:39:40', '2025-02-06 15:39:40', NULL),
 (15, 11, 12, 1, 2, 6.00, 0.50, 11.00, NULL, 'admin', NULL, '2025-02-07 04:27:57', '2025-02-07 04:27:57', NULL),
 (16, 1, 13, 12, 2, 1.79, 1.50, 0.58, NULL, 'admin', NULL, '2025-02-13 06:45:47', '2025-02-13 06:45:47', NULL),
 (17, 1, 13, 11, 2, 1.50, 0.00, 3.00, NULL, 'admin', NULL, '2025-02-13 06:45:48', '2025-02-13 06:45:48', NULL),
 (18, 1, 13, 9, 3, 30.00, 0.00, 90.00, NULL, 'admin', NULL, '2025-02-13 06:45:48', '2025-02-13 06:45:48', NULL),
-(19, 1, 14, 12, 1, 1.79, 1.50, 0.29, NULL, 'admin', NULL, '2025-02-14 04:11:34', '2025-02-14 04:11:34', NULL),
-(20, 1, 15, 2, 2, 6.00, 1.00, 10.00, NULL, 'admin', NULL, '2025-02-26 03:50:55', '2025-02-26 03:50:55', NULL),
-(21, 1, 17, 9, 1, 35.00, 0.00, 35.00, NULL, 'admin', NULL, '2025-02-26 03:51:57', '2025-03-01 16:01:12', NULL),
-(22, 1, 17, 11, 1, 1.50, 0.00, 1.50, NULL, 'admin', NULL, '2025-02-26 03:58:39', '2025-02-26 03:58:39', NULL),
-(23, 1, 18, 9, 3, 35.00, 0.00, 105.00, NULL, 'admin', NULL, '2025-03-07 04:24:26', '2025-03-07 04:24:26', NULL),
-(24, 1, 19, 12, 1, 1.79, 1.50, 0.29, NULL, 'admin', NULL, '2025-03-07 04:43:59', '2025-03-07 04:43:59', NULL),
-(25, 1, 20, 9, 2, 35.00, 0.00, 70.00, NULL, 'admin', NULL, '2025-03-07 06:15:25', '2025-03-07 06:15:25', NULL),
-(26, 1, 21, 9, 1, 35.00, 10.09, 24.91, NULL, 'admin', NULL, '2025-05-05 13:48:17', '2025-05-05 13:48:17', NULL),
-(27, 1, 22, 9, 1, 35.00, 10.09, 24.91, NULL, 'admin', NULL, '2025-05-09 17:26:05', '2025-05-09 17:26:05', NULL),
-(28, 1, 23, 8, 5, 4.00, 3.00, 5.00, NULL, 'admin', NULL, '2025-05-10 04:16:30', '2025-05-10 04:16:30', NULL),
-(29, 1, 23, 2, 1, 6.00, 1.00, 5.00, NULL, 'admin', NULL, '2025-05-10 04:16:30', '2025-05-10 04:16:30', NULL),
-(30, 8, 24, 2, 1, 6.00, 1.00, 5.00, NULL, 'SuperAdmin', NULL, '2025-05-15 14:35:07', '2025-05-15 14:35:07', NULL),
-(31, 8, 24, 13, 1, 11.89, 0.00, 11.89, NULL, 'SuperAdmin', NULL, '2025-05-15 14:35:07', '2025-05-15 14:35:07', NULL),
-(32, 8, 24, 8, 1, 4.00, 3.00, 1.00, NULL, 'SuperAdmin', NULL, '2025-05-15 14:35:07', '2025-05-15 14:35:07', NULL);
+(19, 1, 14, 12, 1, 1.79, 1.50, 0.29, NULL, 'admin', NULL, '2025-02-14 04:11:34', '2025-02-14 04:11:34', NULL);
 
 --
 -- Triggers `order`
@@ -561,7 +530,7 @@ CREATE TABLE `order_detail` (
   `total_amount_dola` decimal(8,2) NOT NULL DEFAULT 0.00,
   `balance_amount` decimal(10,2) DEFAULT 0.00,
   `changes` decimal(10,2) DEFAULT 0.00,
-  `balance_amount_usd` decimal(8,2) DEFAULT 0.00,
+  `status` varchar(50) DEFAULT NULL,
   `discount` decimal(10,2) DEFAULT 0.00,
   `type_currency` enum('usd','khr','thb') NOT NULL DEFAULT 'usd',
   `user_at` mediumtext DEFAULT NULL,
@@ -569,52 +538,21 @@ CREATE TABLE `order_detail` (
   `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `update_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `delete_at` timestamp NULL DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `opening_id` int(11) DEFAULT NULL
+  `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_detail`
 --
 
-INSERT INTO `order_detail` (`id`, `account_id`, `paymenttype_id`, `total_amount`, `total_amount_dola`, `balance_amount`, `changes`, `balance_amount_usd`, `discount`, `type_currency`, `user_at`, `user_update`, `create_at`, `update_at`, `delete_at`, `description`, `opening_id`) VALUES
-(8, 5, 4, 11.00, 11.00, 11.00, 1.00, 1.00, 0.00, 'usd', 'admin', NULL, '2025-02-06 13:27:03', '2025-02-26 02:50:06', NULL, '', NULL),
-(9, NULL, NULL, 21000.00, 5.00, 21000.00, 4200.00, 5.00, 0.00, 'khr', 'admin', NULL, '2025-02-06 13:30:06', '2025-02-26 02:50:11', NULL, '', NULL),
-(10, NULL, NULL, 140.00, 4.00, 140.00, 35.00, 4.00, 1.00, 'thb', 'admin', NULL, '2025-02-06 15:17:56', '2025-05-15 14:34:38', NULL, '', NULL),
-(11, NULL, NULL, 11.00, 11.00, 11.00, 1.00, 11.00, 0.00, 'usd', 'admin', NULL, '2025-02-06 15:39:40', '2025-02-26 02:50:50', NULL, '', NULL),
-(12, NULL, NULL, 11.00, 11.00, 6.00, 1.00, 6.00, 0.00, 'usd', 'admin', NULL, '2025-02-07 04:27:57', '2025-02-26 02:50:58', NULL, 'នៅជុំពាក់', NULL),
-(13, NULL, NULL, 93.58, 93.58, 93.58, 1.00, 93.58, 1.00, 'usd', 'admin', NULL, '2025-02-13 06:45:47', '2025-03-17 05:28:40', NULL, '', 5),
-(14, NULL, NULL, 0.29, 0.29, 0.29, 1.00, 0.29, 0.00, 'usd', 'admin', NULL, '2025-02-14 04:11:34', '2025-02-26 02:51:36', NULL, '', NULL),
-(15, NULL, NULL, 10.00, 10.00, 10.00, 1.00, 0.00, 0.00, 'usd', 'admin', NULL, '2025-02-26 03:50:55', '2025-02-26 03:50:55', NULL, '', NULL),
-(16, 2, 4, 35.00, 35.00, 35.00, 1.00, 3.00, 0.00, 'usd', 'admin', NULL, '2025-02-26 03:51:57', '2025-02-26 03:55:58', NULL, '', NULL),
-(17, 2, 4, 1.50, 1.50, 1.50, 1.00, 1.50, 0.00, 'usd', 'admin', NULL, '2025-02-26 03:58:39', '2025-02-26 03:58:39', NULL, '', NULL),
-(18, NULL, NULL, 105.00, 105.00, 105.00, 1.00, 105.00, 0.00, 'usd', 'admin', NULL, '2025-03-07 04:24:26', '2025-03-16 17:02:28', NULL, '', 5),
-(19, NULL, NULL, 0.29, 0.29, 0.29, 1.00, 0.29, 0.00, 'usd', 'admin', NULL, '2025-03-07 04:43:58', '2025-03-07 04:43:58', NULL, '', NULL),
-(20, NULL, NULL, 70.00, 70.00, 70.00, 1.00, 70.00, 0.00, 'usd', 'admin', NULL, '2025-03-07 06:15:25', '2025-03-29 08:14:57', NULL, '', 5),
-(21, NULL, NULL, 24.91, 24.91, 24.91, 1.00, 24.91, 0.00, 'usd', 'admin', NULL, '2025-05-05 13:48:17', '2025-05-05 13:48:17', NULL, '', 15),
-(22, NULL, NULL, 24.91, 24.91, 24.91, 1.00, 24.00, 0.00, 'usd', 'admin', NULL, '2025-05-09 17:26:05', '2025-05-10 04:14:36', NULL, '', 16),
-(23, NULL, NULL, 10.00, 10.00, 10.00, 1.00, 10.00, 0.00, 'usd', 'admin', NULL, '2025-05-10 04:16:30', '2025-05-10 04:16:30', NULL, '', 17),
-(24, NULL, NULL, 7.89, 7.89, 7.89, 1.00, 7.89, 10.00, 'usd', 'SuperAdmin', NULL, '2025-05-15 14:35:07', '2025-05-15 14:35:07', NULL, '', 19);
-
---
--- Triggers `order_detail`
---
-DELIMITER $$
-CREATE TRIGGER `123` AFTER UPDATE ON `order_detail` FOR EACH ROW BEGIN
-    UPDATE acount
-    SET balance = balance + NEW.balance_amount_usd
-    WHERE id = NEW.account_id;
-END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `after_insert_order_get_account_sum_baleabe_acount` AFTER INSERT ON `order_detail` FOR EACH ROW BEGIN
-    UPDATE acount
-    SET balance = balance + NEW.balance_amount_usd
-    WHERE id = NEW.account_id;
-END
-$$
-DELIMITER ;
+INSERT INTO `order_detail` (`id`, `account_id`, `paymenttype_id`, `total_amount`, `total_amount_dola`, `balance_amount`, `changes`, `status`, `discount`, `type_currency`, `user_at`, `user_update`, `create_at`, `update_at`, `delete_at`, `description`) VALUES
+(8, 5, 4, 11.00, 11.00, 11.00, 1.00, NULL, 0.00, 'usd', 'admin', NULL, '2025-02-06 13:27:03', '2025-02-14 15:29:17', NULL, ''),
+(9, NULL, NULL, 21000.00, 5.00, 21000.00, 4200.00, NULL, 0.00, 'khr', 'admin', NULL, '2025-02-06 13:30:06', '2025-02-14 15:29:13', NULL, ''),
+(10, NULL, NULL, 140.00, 4.00, 135.00, 35.00, NULL, 1.00, 'thb', 'admin', NULL, '2025-02-06 15:17:56', '2025-02-15 08:24:42', NULL, ''),
+(11, NULL, NULL, 11.00, 11.00, 11.00, 1.00, NULL, 0.00, 'usd', 'admin', NULL, '2025-02-06 15:39:40', '2025-02-14 15:28:57', NULL, ''),
+(12, NULL, NULL, 11.00, 11.00, 6.00, 1.00, NULL, 0.00, 'usd', 'admin', NULL, '2025-02-07 04:27:57', '2025-02-14 15:23:15', NULL, 'នៅជុំពាក់'),
+(13, NULL, NULL, 93.58, 93.58, 93.58, 1.00, NULL, 1.00, 'usd', 'admin', NULL, '2025-02-13 06:45:47', '2025-02-14 18:27:15', NULL, ''),
+(14, NULL, NULL, 0.29, 0.29, 0.29, 1.00, NULL, 0.00, 'usd', 'admin', NULL, '2025-02-14 04:11:34', '2025-02-14 15:29:19', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -638,8 +576,7 @@ CREATE TABLE `order_repay` (
 --
 
 INSERT INTO `order_repay` (`id`, `product_id`, `order_repay_detail_id`, `qty`, `price`, `discount`, `total`, `description`) VALUES
-(6, 2, 8, 1, 6.00, 1.00, 5.00, 'នៅដូចដើម'),
-(7, 2, 9, 1, 6.00, 1.00, 5.00, 'នៅដូចដើម');
+(6, 2, 8, 1, 6.00, 1.00, 5.00, 'នៅដូចដើម');
 
 --
 -- Triggers `order_repay`
@@ -663,7 +600,6 @@ DELIMITER ;
 CREATE TABLE `order_repay_detail` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `order_detail_id` int(11) DEFAULT NULL,
   `account_id` int(11) DEFAULT NULL,
   `payment_date` date DEFAULT NULL,
   `total_amount` decimal(10,2) NOT NULL,
@@ -679,9 +615,8 @@ CREATE TABLE `order_repay_detail` (
 -- Dumping data for table `order_repay_detail`
 --
 
-INSERT INTO `order_repay_detail` (`id`, `customer_id`, `order_detail_id`, `account_id`, `payment_date`, `total_amount`, `discount_amount`, `balance_payment`, `user_at`, `user_update`, `created_at`, `updated_at`) VALUES
-(8, 1, NULL, NULL, '2025-02-14', 5.00, 0.00, 5.00, 'admin', NULL, '2025-02-14 04:02:47', '2025-02-27 07:57:11'),
-(9, 10, 10, NULL, '2025-03-18', 5.00, NULL, 5.00, NULL, NULL, '2025-03-18 08:59:32', '2025-03-18 08:59:32');
+INSERT INTO `order_repay_detail` (`id`, `customer_id`, `account_id`, `payment_date`, `total_amount`, `discount_amount`, `balance_payment`, `user_at`, `user_update`, `created_at`, `updated_at`) VALUES
+(8, 1, NULL, '2025-02-14', 5.00, 0.00, 5.00, 'admin', NULL, '2025-02-14 04:02:47', '2025-02-14 04:02:47');
 
 -- --------------------------------------------------------
 
@@ -702,7 +637,7 @@ CREATE TABLE `payment_type` (
 
 INSERT INTO `payment_type` (`id`, `pay_manes`, `create_at`, `updated_at`) VALUES
 (1, 'សាច់ប្រាក់', '2024-10-29 03:29:44', '2024-10-29 03:32:37'),
-(2, 'តាមធនាគារ', '2024-10-29 03:35:31', '2025-05-15 17:57:00'),
+(2, 'ជាមុខ', '2024-10-29 03:35:31', '2024-10-29 03:35:31'),
 (4, 'កាត', '2024-10-29 03:41:09', '2024-10-29 03:41:09');
 
 -- --------------------------------------------------------
@@ -747,16 +682,21 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `pro_names`, `category_id`, `brand_id`, `unit_id`, `qty`, `stock`, `discount`, `note_qty`, `mg_stock`, `cost_price`, `included_tax`, `include_tax`, `exclude_tax`, `profit`, `expiry`, `status`, `type_of_tax`, `product_type`, `image`, `barcode`, `description`, `user_at`, `user_update`, `create_at`, `update_at`, `delete_at`, `barcode_type`) VALUES
-(1, 'ស្រាបៀABCដប', 1, 1, 1, 11, 13, 0.00, 5, 'disable', 3.00, NULL, 2.00, 7.00, 1.00, NULL, 'inactive', 'ផ្ដាច់មុខ', 'មួយ', '1746703889848_DSC_9483 (2).jpg', 'A062512875', '', 'admin', 'admin', '2024-10-23 07:25:20', '2025-05-16 18:14:24', NULL, NULL),
-(2, 'ការហ្វេ', 1, 1, 1, 0, 3, 0.00, 1, 'enable', 2.50, NULL, 0.00, 6.00, 1.00, NULL, 'active', 'រួមបញ្ចូលគ្នា', 'មួយ', '1746811515496_namecoin_7080495.png', 'B062512875', '', 'admin', 'admin', '2024-10-23 07:28:46', '2025-05-15 18:25:32', NULL, NULL),
+(1, 'ស្រាបៀABCដប', 1, 1, 1, 10, 12, 0.50, 5, 'disable', 3.00, NULL, 0.00, 7.00, 1.00, NULL, 'inactive', 'ផ្ដាច់មុខ', 'មួយ', '1729669329976_download (10).jpg', 'A062512875', NULL, 'admin', 'admin', '2024-10-23 07:25:20', '2025-02-25 13:47:52', NULL, NULL),
+(2, 'ការហ្វេ', 1, 1, 1, 2, 3, 1.00, 1, 'enable', 2.50, NULL, 0.00, 6.00, 1.00, NULL, 'active', 'រួមបញ្ចូលគ្នា', 'មួយ', '1729668526878_coffee.jpg', 'B062512875', NULL, 'admin', 'admin', '2024-10-23 07:28:46', '2025-02-25 07:46:00', NULL, NULL),
+(3, 'ក្រែម', 1, 5, 1, 5, 6, 0.50, 10, 'enable', 10.00, NULL, 0.00, 12.00, 2.00, '2024-10-25', 'inactive', 'ផ្ដាច់មុខ', 'បណ្ដុំ', '1729704000068_images (1).jpg', 'B012875', NULL, 'admin', NULL, '2024-10-23 17:20:00', '2025-02-25 07:45:28', NULL, NULL),
 (5, 'ឆាក្ដៅសាច់ទា', 1, 4, 2, 3, 10, 0.00, 31, 'enable', 11.90, NULL, 0.00, 31.00, 1.10, NULL, 'inactive', 'ផ្ដាច់មុខ', 'អថេរ', '1729710113801_images (13).jpg', 'C06275', NULL, 'admin', 'admin1', '2024-10-23 17:35:48', '2025-02-15 03:59:44', NULL, NULL),
 (6, 'ប្រហុកអាំង', 11, 5, 4, 3, 4, 0.00, 10, 'enable', 1.00, NULL, 0.00, 1.50, 0.50, '2026-06-24', 'inactive', 'រួមបញ្ចូលគ្នា', 'មួយ', '1738294086034_images (16).jpg', 'D00012875', 'yes', 'admin', 'admin', '2024-10-23 18:01:51', '2025-02-25 07:46:13', NULL, NULL),
-(8, 'Pizza', 1, 1, 1, 0, 6, 0.00, 1, 'enable', 2.50, NULL, 1.00, 4.00, 1.00, '2024-11-01', 'active', 'រួមបញ្ចូលគ្នា', 'មួយ', NULL, 'G00012875', 'null', 'admin', NULL, '2024-10-28 06:59:30', '2025-05-19 19:03:45', NULL, NULL),
-(9, 'ABC', 4, 5, 3, -4, 6, 0.00, 1, 'disable', 30.00, NULL, 0.00, 35.00, 8.00, '2025-01-31', 'active', 'រួមបញ្ចូលគ្នា', 'មួយ', NULL, '00000000299', NULL, 'admin', NULL, '2025-01-30 06:47:34', '2025-05-19 19:03:45', NULL, 'Code-128'),
-(11, 'ប្រហិតអាំង', NULL, NULL, 3, 1, 5, 0.00, 1, 'enable', 1.00, NULL, 0.00, 1.50, 0.50, '2025-02-03', 'active', 'ផ្ដាច់មុខ', 'មួយ', '1738220986787_food1.jpg', '00000665798', '', 'admin', 'admin', '2025-01-30 07:09:46', '2025-02-26 03:58:39', NULL, NULL),
-(12, 'ជើងមានអាំង', 8, 1, 2, 1, 1, 1.00, 1, 'disable', 0.99, NULL, 0.00, 1.79, 0.80, '2025-02-01', 'active', 'ផ្ដាច់មុខ', 'មួយ', '1738221609109_download (13).jpg', '00062512875', '', 'admin', 'admin', '2025-01-30 07:20:09', '2025-05-15 19:02:22', NULL, NULL),
-(13, 'មាន់ដុតកូកាកូឡា', 4, 1, 2, 0, 1, 0.00, 1, 'enable', 4.92, NULL, 4.00, 11.89, 2.97, '2025-02-10', 'active', 'ផ្ដាច់មុខ', 'មួយ', '1738223019885_Meatballs.jpg', '00069607756', 'មាន់ដុតកូកាកូឡា', 'admin', 'admin', '2025-01-30 07:43:39', '2025-05-28 18:39:44', NULL, NULL),
-(16, 'កញ្ញាបុផ្ផាស្រស់', NULL, NULL, 3, 1, 1, 0.00, 1, 'enable', 0.00, NULL, 0.00, 0.00, 0.00, NULL, 'inactive', 'ផ្ដាច់មុខ', 'មួយ', NULL, '00020336606', NULL, 'admin', NULL, '2025-01-31 04:34:03', '2025-03-13 16:12:38', NULL, 'Code-128');
+(7, 'ត្រី', 8, 5, 2, 1, 5, 1.20, 1, 'enable', 10.00, NULL, 0.00, 13.00, 3.00, NULL, 'inactive', 'ផ្ដាច់មុខ', 'មួយ', '1729741995726_images (17).jpg', 'F00512875', '', 'admin', 'admin', '2024-10-23 19:08:08', '2025-02-09 14:08:22', NULL, NULL),
+(8, 'Pizza', 1, 1, 1, 0, 0, 3.00, 1, 'enable', 2.50, NULL, 0.00, 4.00, 1.00, '2024-11-01', 'inactive', 'រួមបញ្ចូលគ្នា', 'មួយ', NULL, 'G00012875', 'null', 'admin', NULL, '2024-10-28 06:59:30', '2025-02-09 07:09:22', NULL, NULL),
+(9, 'ABC', 4, 5, 3, 4, 6, 0.00, 1, 'disable', 30.00, NULL, 0.00, 35.00, 8.00, '2025-01-31', 'active', 'រួមបញ្ចូលគ្នា', 'មួយ', NULL, '00000000299', NULL, 'admin', NULL, '2025-01-30 06:47:34', '2025-02-25 13:49:31', NULL, 'Code-128'),
+(10, 'ត្រីខមំប៉ុង', 8, 1, 4, 0, 0, 0.00, 1, 'enable', 10.00, NULL, 0.00, 15.00, 5.00, '2025-02-01', 'inactive', 'ផ្ដាច់មុខ', 'មួយ', NULL, '00000706363', '', 'admin', 'admin', '2025-01-30 07:04:32', '2025-01-31 16:04:10', NULL, NULL),
+(11, 'ប្រហិតអាំង', NULL, NULL, 3, 2, 5, 0.00, 1, 'enable', 1.00, NULL, 0.00, 1.50, 0.50, '2025-02-03', 'active', 'ផ្ដាច់មុខ', 'មួយ', '1738220986787_food1.jpg', '00000665798', '', 'admin', 'admin', '2025-01-30 07:09:46', '2025-02-25 07:46:09', NULL, NULL),
+(12, 'ជើងមានអាំង', 8, 1, 2, 1, 1, 1.50, 1, 'disable', 0.99, NULL, 0.00, 1.79, 0.80, '2025-02-01', 'active', 'ផ្ដាច់មុខ', 'មួយ', '1738221609109_download (13).jpg', '00062512875', '', 'admin', 'admin', '2025-01-30 07:20:09', '2025-02-25 07:45:20', NULL, NULL),
+(13, 'មាន់ដុតកូកាកូឡា', 4, 1, 2, 0, 0, 0.00, 1, 'enable', 4.92, NULL, 4.00, 11.89, 2.97, '2025-02-10', 'active', 'ផ្ដាច់មុខ', 'មួយ', '1738223019885_Meatballs.jpg', '00069607756', 'មាន់ដុតកូកាកូឡា', 'admin', 'admin', '2025-01-30 07:43:39', '2025-02-06 02:41:03', NULL, NULL),
+(14, 'មាន់ដុតស្ទឹង', NULL, NULL, 2, 0, 0, 0.00, 2, 'disable', 200.00, NULL, 1.00, 6.00, 3.00, '2025-03-01', 'inactive', 'ផ្ដាច់មុខ', 'មួយ', NULL, '00000950632', '', 'admin', 'admin', '2025-01-30 07:58:52', '2025-02-15 18:39:57', NULL, NULL),
+(16, 'កញ្ញាបុផ្ផាស្រស់', NULL, NULL, 3, 0, 0, 0.00, 1, 'enable', 0.00, NULL, 0.00, 0.00, 0.00, NULL, 'inactive', 'ផ្ដាច់មុខ', 'មួយ', NULL, '00020336606', NULL, 'admin', NULL, '2025-01-31 04:34:03', '2025-01-31 07:08:03', NULL, 'Code-128'),
+(17, 'មាន់ដុត', NULL, NULL, 4, 0, 0, 0.00, 1, 'enable', 1.00, NULL, 0.00, 2.00, 1.00, NULL, 'inactive', 'ផ្ដាច់មុខ', 'មួយ', NULL, '00036062028', '', 'admin', 'admin', '2025-01-31 04:38:48', '2025-01-31 07:08:05', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -783,12 +723,14 @@ CREATE TABLE `product_discount` (
 --
 
 INSERT INTO `product_discount` (`id`, `product_discount_detail_id`, `product_id`, `discount_amount`, `date_start`, `date_end`, `user_at`, `user_update`, `create_at`, `update_at`, `delete_at`) VALUES
-(44, 8, 1, 1.50, '2025-03-05', '2025-04-12', 'admin', 'SuperAdmin', '2025-02-13 05:00:15', '2025-05-15 12:32:46', NULL),
-(47, 15, 8, 3.00, '2025-02-19', '2025-02-27', 'SuperAdmin', 'admin', '2025-04-28 18:58:35', '2025-05-08 13:23:18', NULL),
-(51, 20, 16, 0.00, '2025-02-12', '2025-02-15', 'SuperAdmin', 'SuperAdmin', '2025-05-12 04:50:01', '2025-05-12 04:50:05', NULL),
-(52, 20, 13, 0.00, '2025-02-12', '2025-02-15', 'SuperAdmin', 'SuperAdmin', '2025-05-12 04:50:01', '2025-05-12 04:50:05', NULL),
-(69, 19, 16, 0.00, '2025-03-05', '2025-04-05', 'SuperAdmin', NULL, '2025-05-15 12:32:33', '2025-05-15 12:32:33', NULL),
-(90, 37, 12, 1.00, '2025-05-16', '2025-05-23', 'SuperAdmin', NULL, '2025-05-15 19:01:32', '2025-05-15 19:01:32', NULL);
+(29, 15, 5, 0.00, '2025-02-19', '2025-02-27', 'admin', NULL, '2025-02-12 05:14:52', '2025-02-12 05:14:52', NULL),
+(30, 15, 10, 2.50, '2025-02-19', '2025-02-27', 'admin', NULL, '2025-02-12 05:14:52', '2025-02-12 05:14:52', NULL),
+(34, 15, 11, 4.50, '2025-02-19', '2025-02-27', 'admin', NULL, '2025-02-12 05:27:35', '2025-02-12 05:27:35', NULL),
+(38, 19, 9, 10.09, '2025-03-05', '2025-04-05', 'admin', NULL, '2025-02-12 05:53:54', '2025-02-12 06:05:00', NULL),
+(43, 8, 8, 3.00, '2025-03-05', '2025-04-12', 'admin', 'admin', '2025-02-13 04:51:18', '2025-02-13 05:05:09', NULL),
+(44, 8, 1, 1.50, '2025-03-05', '2025-04-12', 'admin', 'admin', '2025-02-13 05:00:15', '2025-02-13 05:05:09', NULL),
+(45, 20, 11, 0.00, '2025-02-12', '2025-02-15', 'admin', 'admin', '2025-02-13 05:17:49', '2025-02-13 05:28:43', NULL),
+(46, 20, 17, 0.00, '2025-02-12', '2025-02-15', 'admin', 'admin', '2025-02-13 05:17:49', '2025-02-13 05:28:47', NULL);
 
 -- --------------------------------------------------------
 
@@ -809,13 +751,7 @@ INSERT INTO `product_discount_detail` (`id`, `detail_name`) VALUES
 (8, 'កញ្ញាបុផ្ផាស្រស់'),
 (15, 'កញ្ញាបុផ្ផាស្រស់1'),
 (19, 'កញ្ញាបុផ្ផាស្រស់4'),
-(20, 'ក្រែម'),
-(21, 'ស្រាបៀABCដប'),
-(26, 'AFAFGADF'),
-(34, 'AF'),
-(35, 'sana'),
-(36, 'AF'),
-(37, '001');
+(20, 'ក្រែម');
 
 -- --------------------------------------------------------
 
@@ -849,22 +785,21 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`id`, `supplier_id`, `product_id`, `purchasedetail_id`, `date_by`, `qty`, `discount`, `cost_price`, `include_tax`, `exclude_tax`, `profit`, `total`, `status`, `user_at`, `user_update`, `create_at`, `update_at`, `delete_at`) VALUES
-(78, 6, 1, 107, '2025-03-17', 5, 0.00, 3.00, 0.00, 7.00, NULL, 15.00, 'completed', 'admin', 'SuperAdmin', '2025-02-25 07:40:58', '2025-04-28 18:34:29', NULL),
-(79, 5, 1, 108, '2025-05-08', 1, 0.00, 3.00, 0.00, 7.00, NULL, 3.00, 'active', 'SuperAdmin', NULL, '2025-04-28 18:36:00', '2025-04-28 18:36:00', NULL),
-(80, 5, 8, 108, '2025-05-08', 1, 0.00, 2.50, 0.00, 4.00, NULL, 2.50, 'active', 'SuperAdmin', NULL, '2025-04-28 18:36:00', '2025-04-28 18:36:00', NULL),
-(81, 4, 1, 109, '2025-04-28', 1, 0.00, 3.00, 0.00, 7.00, NULL, 3.00, 'active', 'SuperAdmin', 'SuperAdmin', '2025-04-28 18:53:02', '2025-04-28 18:53:32', NULL),
-(82, 5, 8, 110, '2025-05-05', 1, 0.00, 2.50, 0.00, 4.00, NULL, 2.50, 'completed', 'admin', 'SuperAdmin', '2025-05-05 14:28:03', '2025-05-11 18:29:59', NULL),
-(83, 5, 8, 111, '2025-05-10', 3, 0.00, 2.50, 0.00, 4.00, NULL, 7.50, 'completed', 'admin', 'SuperAdmin', '2025-05-10 03:55:10', '2025-05-11 18:30:28', NULL),
-(84, 5, 1, 112, '2025-05-11', 1, 0.00, 3.00, 2.00, 7.00, NULL, 1.00, 'completed', 'SuperAdmin', NULL, '2025-05-11 18:11:33', '2025-05-11 18:51:52', NULL),
-(85, 5, 8, 112, '2025-05-11', 1, 0.00, 2.50, 1.00, 4.00, NULL, 1.50, 'completed', 'SuperAdmin', NULL, '2025-05-11 18:11:33', '2025-05-11 18:51:52', NULL),
-(86, 5, 1, 113, '2025-05-11', 1, 0.00, 3.00, 1.00, 7.00, NULL, 4.00, 'active', 'SuperAdmin', 'SuperAdmin', '2025-05-11 18:19:28', '2025-05-11 18:58:10', NULL),
-(87, 5, 8, 113, '2025-05-11', 1, 0.00, 2.50, 1.00, 4.00, NULL, 3.50, 'active', 'SuperAdmin', 'SuperAdmin', '2025-05-11 18:19:28', '2025-05-11 18:58:10', NULL),
-(88, 4, 8, 114, '2025-05-11', 1, 0.00, 2.50, 0.00, 4.00, NULL, 2.50, 'active', 'SuperAdmin', 'SuperAdmin', '2025-05-11 18:36:36', '2025-05-11 18:36:43', NULL),
-(89, 4, 1, 114, '2025-05-11', 1, 0.00, 3.00, 0.00, 7.00, NULL, 3.00, 'active', 'SuperAdmin', 'SuperAdmin', '2025-05-11 18:37:20', '2025-05-11 18:56:40', NULL),
-(90, 4, 9, 114, '2025-05-11', 1, 0.00, 30.00, 0.00, 35.00, NULL, 30.00, 'active', 'SuperAdmin', 'SuperAdmin', '2025-05-11 18:37:20', '2025-05-11 18:56:40', NULL),
-(91, 4, 1, 115, '2025-05-11', 1, 0.00, 3.00, 0.00, 7.00, NULL, 3.00, 'active', 'SuperAdmin', NULL, '2025-05-11 19:02:52', '2025-05-11 19:02:52', NULL),
-(92, 4, 8, 115, '2025-05-11', 1, 0.00, 2.50, 0.00, 4.00, NULL, 2.50, 'active', 'SuperAdmin', NULL, '2025-05-11 19:02:52', '2025-05-11 19:02:52', NULL),
-(93, 4, 9, 115, '2025-05-11', 2, 0.00, 30.00, 0.00, 35.00, NULL, 60.00, 'active', 'SuperAdmin', NULL, '2025-05-11 19:02:52', '2025-05-11 19:02:52', NULL);
+(44, 1, 1, 94, '2024-10-31', 3, 1.00, 2.22, 2.00, 8.80, NULL, 7.66, 'pending', 'admin1', 'admin', '2024-10-31 08:40:05', '2025-02-12 05:36:08', NULL),
+(53, 3, 7, 98, '2025-01-08', 2, 0.00, 10.00, 0.00, 30.00, NULL, 20.00, 'active', 'admin', 'admin', '2025-01-08 07:23:41', '2025-02-15 19:36:25', NULL),
+(55, 3, 1, 98, '2025-01-08', 1, 0.00, 3.00, 0.00, 6.00, NULL, 6.00, 'active', 'admin', 'admin', '2025-02-02 06:49:00', '2025-02-25 07:01:38', NULL),
+(56, 3, 9, 98, '2025-01-08', 2, 0.00, 200.00, 0.00, 30.00, NULL, 400.00, 'active', 'admin', 'admin', '2025-02-02 07:16:07', '2025-02-15 19:36:25', NULL),
+(65, 4, 9, 100, '2025-02-03', 1, 0.00, 20.00, 0.00, 30.00, NULL, 20.00, 'pending', 'admin', 'admin', '2025-02-03 18:20:56', '2025-02-05 14:30:20', NULL),
+(69, 4, 1, 100, '2025-02-03', 3, 0.00, 2.50, 0.00, 6.00, NULL, 7.50, 'pending', 'admin', 'admin', '2025-02-03 18:59:04', '2025-02-05 14:30:20', NULL),
+(70, 4, 8, 100, '2025-02-03', 5, 0.00, 2.51, 0.00, 4.00, NULL, 12.55, 'pending', 'admin', 'admin', '2025-02-03 18:59:04', '2025-02-05 14:30:40', NULL),
+(71, 1, 8, 94, '2024-10-31', 1, 0.00, 2.50, 0.00, 4.00, NULL, 2.50, 'pending', 'admin', NULL, '2025-02-12 05:36:08', '2025-02-12 05:36:08', NULL),
+(72, 3, 9, 101, '2025-02-16', 1, 0.00, 20.00, 0.00, 30.00, NULL, 20.00, 'pending', 'admin', 'admin', '2025-02-16 02:43:07', '2025-02-25 04:50:06', NULL),
+(73, 1, 8, 102, '2025-02-16', 1, 0.00, 2.50, 0.00, 4.00, NULL, 2.50, 'active', 'admin', 'admin', '2025-02-16 03:18:12', '2025-02-16 03:18:37', NULL),
+(74, 4, 9, 103, '2025-02-16', 1, 0.00, 30.00, 0.00, 35.00, NULL, 30.00, 'completed', 'admin', 'admin', '2025-02-16 03:23:04', '2025-02-25 13:49:31', NULL),
+(75, 4, 9, 104, '2025-02-16', 1, 0.00, 20.00, 0.00, 30.00, NULL, 20.00, 'completed', 'admin', 'admin', '2025-02-16 03:47:39', '2025-02-25 07:35:13', NULL),
+(76, 4, 3, 105, '2025-02-16', 4, 0.00, 10.00, 0.00, 12.00, NULL, 40.00, 'completed', 'admin', 'admin', '2025-02-16 03:59:08', '2025-02-25 07:28:05', NULL),
+(77, 5, 1, 106, '2025-02-25', 4, 0.00, 2.50, 0.00, 6.00, NULL, 10.00, 'completed', 'admin', 'admin', '2025-02-25 05:02:19', '2025-02-25 07:39:15', NULL),
+(78, 6, 1, 107, '2025-02-25', 5, 0.00, 3.00, 0.00, 7.00, NULL, 15.00, 'completed', 'admin', 'admin', '2025-02-25 07:40:58', '2025-02-25 13:47:52', NULL);
 
 --
 -- Triggers `purchase`
@@ -948,15 +883,20 @@ CREATE TABLE `purchase_detail` (
 --
 
 INSERT INTO `purchase_detail` (`id`, `paymenttype_id`, `account_id`, `amount_total`, `amount_discount`, `amount_pay`, `pay_date`, `create_at`, `update_at`) VALUES
-(107, NULL, NULL, 15.00, 0.00, 15.00, '2025-02-25', '2025-02-25 07:40:58', '2025-05-11 18:41:15'),
-(108, 4, 5, 5.50, 2.00, 3.50, '2025-04-28', '2025-04-28 18:36:00', '2025-04-28 18:36:00'),
-(109, NULL, NULL, 3.00, 0.00, 3.00, '2025-04-28', '2025-04-28 18:53:02', '2025-05-11 18:26:36'),
-(110, NULL, NULL, 2.50, 0.00, 2.50, '2025-05-05', '2025-05-05 14:28:03', '2025-05-11 18:30:49'),
-(111, NULL, 5, 7.50, 0.00, 7.50, '2025-05-10', '2025-05-10 03:55:10', '2025-05-10 03:55:10'),
-(112, NULL, NULL, 2.50, 2.00, 0.50, '2025-05-11', '2025-05-11 18:11:33', '2025-05-11 18:11:33'),
-(113, NULL, NULL, 7.50, 2.00, 1.50, '2025-05-11', '2025-05-11 18:19:28', '2025-05-11 18:58:10'),
-(114, NULL, 5, 35.50, 0.00, 35.50, '2025-05-11', '2025-05-11 18:36:36', '2025-05-11 18:37:20'),
-(115, NULL, NULL, 65.50, 5.00, 60.50, '2025-05-11', '2025-05-11 19:02:52', '2025-05-11 19:02:52');
+(89, NULL, NULL, 2.00, 0.00, 0.00, '2024-10-31', '2024-10-31 06:00:00', '2025-02-04 07:40:10'),
+(94, 1, 5, 10.16, 0.00, 6.00, '2024-10-31', '2024-10-31 08:40:05', '2025-02-12 05:36:08'),
+(96, 1, 5, 43.50, 5.00, 38.50, '2024-11-19', '2024-11-19 05:54:20', '2025-02-04 07:19:15'),
+(97, NULL, NULL, 4.00, 0.00, 4.00, '2024-11-20', '2024-11-20 03:56:32', '2025-02-03 16:35:18'),
+(98, 4, 5, 426.00, 12.00, 26.00, '2025-01-08', '2025-01-08 07:23:41', '2025-02-03 07:31:55'),
+(99, 4, 4, 31.98, 1.00, 2.00, '2025-01-27', '2025-01-27 16:35:40', '2025-02-05 14:04:38'),
+(100, NULL, NULL, 40.05, 0.00, 40.05, '2025-02-03', '2025-02-03 18:20:56', '2025-02-05 14:30:40'),
+(101, NULL, 2, 20.00, 0.00, 13.00, '2025-02-16', '2025-02-16 02:43:07', '2025-02-16 02:59:21'),
+(102, NULL, 2, 2.50, 0.00, 0.50, '2025-02-16', '2025-02-16 03:18:12', '2025-02-16 03:18:12'),
+(103, NULL, 2, 30.00, 0.00, 30.00, '2025-02-16', '2025-02-16 03:23:04', '2025-02-25 13:49:09'),
+(104, NULL, 2, 20.00, 0.00, 13.00, '2025-02-16', '2025-02-16 03:47:39', '2025-02-25 07:35:13'),
+(105, NULL, NULL, 40.00, 0.00, 6.00, '2025-02-16', '2025-02-16 03:59:08', '2025-02-25 05:07:26'),
+(106, NULL, NULL, 10.00, 0.00, 10.00, '2025-02-25', '2025-02-25 05:02:19', '2025-02-25 05:02:19'),
+(107, NULL, NULL, 15.00, 0.00, 15.00, '2025-02-25', '2025-02-25 07:40:58', '2025-02-25 13:47:52');
 
 --
 -- Triggers `purchase_detail`
@@ -983,64 +923,24 @@ END
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `after_purchase_detail_update` AFTER UPDATE ON `purchase_detail` FOR EACH ROW BEGIN
+CREATE TRIGGER `updatet_on_purchase-detail_Subtract_account` AFTER UPDATE ON `purchase_detail` FOR EACH ROW BEGIN
     DECLARE purchase_status VARCHAR(50);
 
-    -- Safely get the status from the related `purchase` row (LIMIT 1 prevents multiple row error)
+    -- Get the status of the corresponding purchase
     SELECT p.status INTO purchase_status
     FROM purchase p
-    WHERE p.purchasedetail_id = NEW.id
-    LIMIT 1;
+    WHERE p.purchasedetail_id = NEW.id;
 
-    -- Update account balance only if the purchase status is 'completed' or 'active'
-    IF purchase_status IS NOT NULL AND (purchase_status = 'completed' OR purchase_status = 'active') THEN
-        -- Adjust balance: subtract new payment, add back the old one (reversing the previous effect)
+    -- Update the account balance if the status is 'completed' or 'active'
+     IF purchase_status IS NOT NULL AND (purchase_status = 'completed' OR purchase_status = 'active') THEN
+        -- Subtract the new amount_pay and add the old amount_pay (to handle changes)
         UPDATE acount
-        SET balance = balance + OLD.amount_pay - NEW.amount_pay
+        SET  balance = balance + OLD.amount_pay - NEW.amount_pay
         WHERE id = NEW.account_id;
     END IF;
 END
 $$
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sales_opening_report`
---
-
-CREATE TABLE `sales_opening_report` (
-  `id` int(11) NOT NULL,
-  `opening_date` datetime NOT NULL,
-  `end_date` datetime DEFAULT NULL,
-  `shift` varchar(50) NOT NULL,
-  `cashier_id` int(11) NOT NULL,
-  `opening_balance` decimal(10,2) NOT NULL,
-  `expected_sales` decimal(10,2) DEFAULT 0.00,
-  `actual_sales` decimal(10,2) DEFAULT 0.00,
-  `cash_in` decimal(10,2) DEFAULT 0.00,
-  `cash_out` decimal(8,2) NOT NULL DEFAULT 0.00,
-  `closing_balance` decimal(10,2) DEFAULT 0.00,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `user_update` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `sales_opening_report`
---
-
-INSERT INTO `sales_opening_report` (`id`, `opening_date`, `end_date`, `shift`, `cashier_id`, `opening_balance`, `expected_sales`, `actual_sales`, `cash_in`, `cash_out`, `closing_balance`, `created_at`, `updated_at`, `user_update`) VALUES
-(1, '2025-03-09 00:00:11', '2025-03-12 00:21:55', 'Morning', 1, 120.00, 0.00, 0.00, 0.00, 0.00, -10.00, '2025-03-16 17:00:11', '2025-03-23 16:29:43', 1),
-(2, '2025-03-28 05:40:47', '2025-03-29 11:50:35', 'Morning', 1, 100.00, 0.00, 0.00, 0.00, 0.00, 160.00, '2025-03-28 04:41:10', '2025-03-28 05:08:31', 2),
-(3, '2025-03-28 12:58:06', '2025-03-28 12:58:39', 'Morning', 3, 100.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2025-03-28 05:58:06', '2025-03-28 06:20:14', NULL),
-(4, '2025-03-28 13:24:27', '2025-03-28 13:24:34', 'Morning', 3, 100.00, 0.00, 0.00, 0.00, 0.00, -100.00, '2025-03-28 06:24:27', '2025-03-28 06:25:35', NULL),
-(5, '2025-03-17 00:00:11', '2025-03-21 00:21:55', 'Morning', 1, 20.00, 0.00, 0.00, 0.00, 0.00, 120.00, '2025-03-16 17:00:11', '2025-03-23 16:29:46', 1),
-(15, '2025-05-05 20:46:05', '2025-05-05 20:49:10', 'Morning', 1, 100.00, 0.00, 0.00, 24.91, 0.00, -75.09, '2025-05-05 13:46:05', '2025-05-05 13:49:10', NULL),
-(16, '2025-05-10 00:24:00', '2025-05-10 01:01:14', 'Morning', 1, 100.00, 0.00, 0.00, 24.91, 0.00, -75.09, '2025-05-09 17:24:00', '2025-05-09 18:01:14', NULL),
-(17, '2025-05-10 11:09:11', '2025-05-10 11:20:49', 'Morning', 1, 100.00, 0.00, 0.00, 10.00, 0.00, -90.00, '2025-05-10 04:09:11', '2025-05-10 04:20:49', NULL),
-(18, '2025-05-12 12:28:13', '2025-05-15 19:33:39', 'Morning', 3, 12.00, 0.00, 0.00, 0.00, 0.00, -12.00, '2025-05-12 05:28:13', '2025-05-15 12:33:39', NULL),
-(19, '2025-05-15 20:08:55', '2025-05-15 21:58:47', 'Morning', 3, 100.00, 0.00, 0.00, 7.89, 0.00, -92.11, '2025-05-15 13:08:55', '2025-05-15 14:58:47', NULL);
 
 -- --------------------------------------------------------
 
@@ -1070,11 +970,11 @@ CREATE TABLE `supplier` (
 --
 
 INSERT INTO `supplier` (`id`, `contect_type`, `contect_phone`, `mobile_phone`, `business_names`, `full_names`, `half_names`, `description`, `email`, `user_at`, `user_update`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'អជីវកម្ម', '0123456789', '0965752080', 'ហាងបាយ', NULL, 'SR', 'មានរស់ជាតិឆ្ងាញ់', 'nakry@example.com', 'admin', 'SuperAdmin', '2024-10-22 03:48:38', '2025-05-11 17:34:14', NULL),
-(3, 'អជីវកម្ម', '9654322', NULL, 'ហាងលក់កុំព្យូទ័រ', NULL, NULL, '11', NULL, 'admin', 'SuperAdmin', '2024-10-22 04:24:18', '2025-03-22 05:59:05', NULL),
-(4, 'ផ្ទាល់ខ្លួន', NULL, '098765', NULL, 'Shop phone', NULL, '1', NULL, 'admin', 'admin', '2024-10-28 06:27:18', '2025-03-06 15:28:38', NULL),
-(5, 'ផ្ទាល់ខ្លួន', NULL, '0974882673', NULL, 'My shop 311', '311', 'shop', 'myshop311@gmail.com', 'admin', 'SuperAdmin', '2025-02-24 13:20:20', '2025-05-11 17:25:01', NULL),
-(6, 'ផ្ទាល់ខ្លួន', NULL, '097643', NULL, 'LV', NULL, NULL, NULL, 'admin', 'admin', '2025-02-24 13:32:09', '2025-03-06 15:28:29', NULL);
+(1, 'អជីវកម្ម', '0123456789', '0965752080', 'ហាងបាយ', '', 'SR', 'មានរស់ជាតិឆ្ងាញ់', 'nakry@example.com', 'admin', 'User', '2024-10-22 03:48:38', '2025-02-05 06:52:55', NULL),
+(3, 'អជីវកម្ម', '9654322', '', 'ហាងលក់កុំព្យូទ័រ', '', '', '', '', 'admin', 'admin', '2024-10-22 04:24:18', '2024-10-28 05:48:08', NULL),
+(4, 'ផ្ទាល់ខ្លួន', '', '098765', '', 'Shop phone', '', '', '', 'admin', 'admin', '2024-10-28 06:27:18', '2024-10-28 06:27:39', NULL),
+(5, 'ផ្ទាល់ខ្លួន', NULL, '0974882673', '', 'My shop 311', '311', 'shop', 'myshop311@gmail.com', 'admin', 'admin', '2025-02-24 13:20:20', '2025-02-24 13:28:22', NULL),
+(6, 'ផ្ទាល់ខ្លួន', NULL, '097643', '', 'LV', NULL, NULL, NULL, 'admin', NULL, '2025-02-24 13:32:09', '2025-02-24 13:32:09', NULL);
 
 -- --------------------------------------------------------
 
@@ -1158,7 +1058,6 @@ CREATE TABLE `v_nameproducts` (
 `id` int(11)
 ,`stock_qty` int(11)
 ,`brand_id` int(11)
-,`unit_id` int(11)
 ,`mg_stock` enum('disable','enable')
 ,`pro_names` varchar(255)
 ,`cat_names` varchar(255)
@@ -1204,7 +1103,12 @@ CREATE TABLE `warranty` (
 --
 
 INSERT INTO `warranty` (`id`, `product_id`, `duration`, `type`, `description`, `create_at`, `update_at`, `delete_at`) VALUES
-(9, 12, 23, 'ខែ', 'wef', NULL, NULL, NULL);
+(1, 1, 12, 'months', 'One-year full coverage warranty', NULL, NULL, NULL),
+(6, 5, 11, 'ថ្ងៃ', 'y1', NULL, NULL, NULL),
+(7, 14, 12, 'months', 'One-year full coverage warranty', NULL, NULL, NULL),
+(8, 10, 12, 'ខែ', 'fvar', NULL, NULL, NULL),
+(9, 12, 23, 'ខែ', 'wef', NULL, NULL, NULL),
+(10, 14, 2, 'ថ្ងៃ', 'waf', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1231,7 +1135,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_nameproducts`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_nameproducts`  AS SELECT `pro`.`id` AS `id`, `pro`.`qty` AS `stock_qty`, `pro`.`brand_id` AS `brand_id`, `pro`.`unit_id` AS `unit_id`, `pro`.`mg_stock` AS `mg_stock`, `pro`.`pro_names` AS `pro_names`, `cat`.`cat_names` AS `cat_names`, `pro`.`category_id` AS `category_id`, `u`.`names` AS `unit_names`, `b`.`brand_names` AS `brand_names` FROM (((`products` `pro` left join `category` `cat` on(`pro`.`category_id` = `cat`.`id`)) left join `unit` `u` on(`pro`.`unit_id` = `u`.`id`)) left join `brands` `b` on(`pro`.`brand_id` = `b`.`id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_nameproducts`  AS SELECT `pro`.`id` AS `id`, `pro`.`qty` AS `stock_qty`, `pro`.`brand_id` AS `brand_id`, `pro`.`mg_stock` AS `mg_stock`, `pro`.`pro_names` AS `pro_names`, `cat`.`cat_names` AS `cat_names`, `pro`.`category_id` AS `category_id`, `u`.`names` AS `unit_names`, `b`.`brand_names` AS `brand_names` FROM (((`products` `pro` left join `category` `cat` on(`pro`.`category_id` = `cat`.`id`)) left join `unit` `u` on(`pro`.`unit_id` = `u`.`id`)) left join `brands` `b` on(`pro`.`brand_id` = `b`.`id`)) ;
 
 -- --------------------------------------------------------
 
@@ -1274,13 +1178,6 @@ ALTER TABLE `brands`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cash_withdrawals`
---
-ALTER TABLE `cash_withdrawals`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `cashier_id` (`cashier_id`);
-
---
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -1292,8 +1189,7 @@ ALTER TABLE `category`
 ALTER TABLE `cost`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cost_ibfk_1` (`cost_type_id`),
-  ADD KEY `cost_ibfk_2` (`account_id`),
-  ADD KEY `opening_id` (`opening_id`);
+  ADD KEY `cost_ibfk_2` (`account_id`);
 
 --
 -- Indexes for table `cost_type`
@@ -1356,8 +1252,7 @@ ALTER TABLE `order`
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `account_id` (`account_id`),
-  ADD KEY `paymenttype_id` (`paymenttype_id`),
-  ADD KEY `opening_id` (`opening_id`);
+  ADD KEY `paymenttype_id` (`paymenttype_id`);
 
 --
 -- Indexes for table `order_repay`
@@ -1372,8 +1267,7 @@ ALTER TABLE `order_repay`
 ALTER TABLE `order_repay_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `order_repay_detail_ibfk_1` (`account_id`),
-  ADD KEY `customer_id` (`customer_id`),
-  ADD KEY `order_detail_id` (`order_detail_id`);
+  ADD KEY `customer_id` (`customer_id`);
 
 --
 -- Indexes for table `payment_type`
@@ -1396,7 +1290,7 @@ ALTER TABLE `products`
 ALTER TABLE `product_discount`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`),
-  ADD KEY `product_discount_ibfk_2` (`product_discount_detail_id`);
+  ADD KEY `product_discount_detail_id` (`product_discount_detail_id`);
 
 --
 -- Indexes for table `product_discount_detail`
@@ -1409,8 +1303,8 @@ ALTER TABLE `product_discount_detail`
 --
 ALTER TABLE `purchase`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `purchase_ibfk_4` (`purchasedetail_id`),
   ADD KEY `purchase_ibfk_2` (`product_id`),
+  ADD KEY `purchase_ibfk_4` (`purchasedetail_id`),
   ADD KEY `purchase_ibfk_5` (`supplier_id`);
 
 --
@@ -1419,15 +1313,7 @@ ALTER TABLE `purchase`
 ALTER TABLE `purchase_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `paymenttype_id` (`paymenttype_id`),
-  ADD KEY `purchase_detail_ibfk_2` (`account_id`);
-
---
--- Indexes for table `sales_opening_report`
---
-ALTER TABLE `sales_opening_report`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `sales_opening_report_ibfk_1` (`cashier_id`),
-  ADD KEY `user_update` (`user_update`);
+  ADD KEY `account_id` (`account_id`);
 
 --
 -- Indexes for table `supplier`
@@ -1484,12 +1370,6 @@ ALTER TABLE `brands`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `cash_withdrawals`
---
-ALTER TABLE `cash_withdrawals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -1499,13 +1379,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `cost`
 --
 ALTER TABLE `cost`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `cost_type`
 --
 ALTER TABLE `cost_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `currency`
@@ -1529,7 +1409,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_payment`
 --
 ALTER TABLE `customer_payment`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `edit_stock`
@@ -1547,25 +1427,25 @@ ALTER TABLE `group_customer`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `order_repay`
 --
 ALTER TABLE `order_repay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `order_repay_detail`
 --
 ALTER TABLE `order_repay_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `payment_type`
@@ -1583,31 +1463,25 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `product_discount`
 --
 ALTER TABLE `product_discount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `product_discount_detail`
 --
 ALTER TABLE `product_discount_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `purchase_detail`
 --
 ALTER TABLE `purchase_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
-
---
--- AUTO_INCREMENT for table `sales_opening_report`
---
-ALTER TABLE `sales_opening_report`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -1655,8 +1529,7 @@ ALTER TABLE `acount`
 --
 ALTER TABLE `cost`
   ADD CONSTRAINT `cost_ibfk_1` FOREIGN KEY (`cost_type_id`) REFERENCES `cost_type` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `cost_ibfk_2` FOREIGN KEY (`account_id`) REFERENCES `acount` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `cost_ibfk_3` FOREIGN KEY (`opening_id`) REFERENCES `sales_opening_report` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `cost_ibfk_2` FOREIGN KEY (`account_id`) REFERENCES `acount` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `customer`
@@ -1685,8 +1558,7 @@ ALTER TABLE `order`
 --
 ALTER TABLE `order_detail`
   ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `acount` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`paymenttype_id`) REFERENCES `payment_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_detail_ibfk_3` FOREIGN KEY (`opening_id`) REFERENCES `sales_opening_report` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`paymenttype_id`) REFERENCES `payment_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `order_repay`
@@ -1699,8 +1571,7 @@ ALTER TABLE `order_repay`
 --
 ALTER TABLE `order_repay_detail`
   ADD CONSTRAINT `order_repay_detail_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `acount` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_repay_detail_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_repay_detail_ibfk_3` FOREIGN KEY (`order_detail_id`) REFERENCES `order_detail` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `order_repay_detail_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `products`
@@ -1715,7 +1586,7 @@ ALTER TABLE `products`
 --
 ALTER TABLE `product_discount`
   ADD CONSTRAINT `product_discount_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `product_discount_ibfk_2` FOREIGN KEY (`product_discount_detail_id`) REFERENCES `product_discount_detail` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `product_discount_ibfk_2` FOREIGN KEY (`product_discount_detail_id`) REFERENCES `product_discount_detail` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `purchase`
@@ -1729,15 +1600,8 @@ ALTER TABLE `purchase`
 -- Constraints for table `purchase_detail`
 --
 ALTER TABLE `purchase_detail`
-  ADD CONSTRAINT `purchase_detail_ibfk_1` FOREIGN KEY (`paymenttype_id`) REFERENCES `payment_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `purchase_detail_ibfk_2` FOREIGN KEY (`account_id`) REFERENCES `acount` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `sales_opening_report`
---
-ALTER TABLE `sales_opening_report`
-  ADD CONSTRAINT `sales_opening_report_ibfk_1` FOREIGN KEY (`cashier_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `sales_opening_report_ibfk_3` FOREIGN KEY (`user_update`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `purchase_detail_ibfk_1` FOREIGN KEY (`paymenttype_id`) REFERENCES `payment_type` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `purchase_detail_ibfk_2` FOREIGN KEY (`account_id`) REFERENCES `acount` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `warranty`
@@ -1755,26 +1619,17 @@ CREATE DEFINER=`root`@`localhost` EVENT `reset_expired_discounts` ON SCHEDULE EV
     WHERE id IN (SELECT product_id FROM product_discount WHERE date_end < CURDATE());
 END$$
 
-CREATE DEFINER=`root`@`localhost` EVENT `update_product_discounts` ON SCHEDULE EVERY 2 SECOND STARTS '2025-05-16 01:59:22' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
-    -- Step 1: Apply current discounts based on date range
+CREATE DEFINER=`root`@`localhost` EVENT `update_product_discounts` ON SCHEDULE EVERY 1 SECOND STARTS '2025-02-07 21:26:57' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+    -- Apply active discounts
     UPDATE products p
-    JOIN (
-        SELECT product_id, MAX(discount_amount) AS discount
-        FROM product_discount
-        WHERE CURDATE() BETWEEN date_start AND date_end
-        GROUP BY product_id
-    ) valid_discounts ON p.id = valid_discounts.product_id
-    SET p.discount = valid_discounts.discount;
+    JOIN product_discount pd ON p.id = pd.product_id
+    SET p.discount = pd.discount_amount
+    WHERE CURDATE() BETWEEN pd.date_start AND pd.date_end;
 
-    -- Step 2: Reset discount if no valid discount exists today
+    -- Reset expired discounts
     UPDATE products p
-    LEFT JOIN (
-        SELECT DISTINCT product_id
-        FROM product_discount
-        WHERE CURDATE() BETWEEN date_start AND date_end
-    ) active ON p.id = active.product_id
-    SET p.discount = 0.00
-    WHERE active.product_id IS NULL;
+    SET p.discount = 0
+    WHERE p.id IN (SELECT product_id FROM product_discount WHERE date_end < CURDATE());
 END$$
 
 DELIMITER ;

@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "../Navbar";
 import { IoMdClose } from "react-icons/io";
 import { FaBackward } from "react-icons/fa6";
-import {API_URL} from '../../service/api'
+import { API_URL } from '../../service/api'
 
 
 const PurchaseDetails = () => {
@@ -175,7 +175,8 @@ const PurchaseDetails = () => {
     const orderData = {
       customerId: id,
       paymenttype_id: paymentType_ID,
-      account_id: account_ID,
+      // account_id: account_ID || "null",
+       account_id: account_ID !== "" ? Number(account_ID) : null,
       amount_total: editableData.reduce((sum, item) => {
         const qty = Number(item.qty) || 0;
         const excludeTax = Number(item.cost_price) || 0;

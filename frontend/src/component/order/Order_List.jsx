@@ -146,9 +146,9 @@ function Order_List() {
                                                 <td  className={`px-4 py-1 whitespace-nowrap ${remainingAmount > 0 ? 'bg-red-200' : ''}`}>{order.user_at || 'Unknown'}</td>
 
                                                 <td  className={`px-4 py-1 flex space-x-2 whitespace-nowrap ${remainingAmount > 0 ? 'bg-red-200' : ''}`}>
-                                                    <span className="p-2 text-white bg-green-500 hover:bg-green-400">
+                                                    {/* <span className="p-2 text-white bg-green-500 hover:bg-green-400">
                                                         <IoPrint />
-                                                    </span>
+                                                    </span> */}
 
                                                     <Link
                                                         to={`/order-Repay/${order.order_detail_id}`}

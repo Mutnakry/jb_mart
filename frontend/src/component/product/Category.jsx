@@ -152,7 +152,7 @@ const Dashboard = () => {
       setIsInsertModalOpen(false);
     } catch (err) {
       console.error(err);
-      toast.error(`សូមលោកព្យាយាមម្ដងទៀត ស្មោះ ​« ${names} » មានរួចហើយ !`, { autoClose: 3000 });
+      toast.error(`ឈ្មោះនេះនេះមិនអាចលុបបានទេ ស្មោះ ​« ${names} » មានរួចហើយ !`, { autoClose: 3000 });
     }
   };
   const rowAnimation = {

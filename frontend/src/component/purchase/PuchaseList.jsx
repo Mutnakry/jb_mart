@@ -123,7 +123,7 @@ const Dashboard = () => {
                     getAllPuchase();
                 } catch (err) {
                     console.error(err);
-                    toast.error('An error occurred. Please try again!', { autoClose: 3000 });
+                    toast.error('ឈ្មោះនេះនេះមិនអាចលុបបានទេ !', { autoClose: 3000 });
                 }
             }
         }
@@ -291,7 +291,7 @@ const Dashboard = () => {
                                             <td className="px-4 py-1 text-center">{purchase.amount_discount} $</td>
                                             <td className="px-4 py-1">{purchase.total_amount} $</td>
                                             <td className="px-4 py-1 text-center">{purchase.amount_pay} $</td>
-                                            <td className="px-4 py-1 text-center">{((purchase.total_amount) - (purchase.amount_pay)).toFixed(2)} $</td>
+                                            <td className="px-4 py-1 text-center">{( Number(purchase.total_amount) - (Number(purchase.amount_discount) + Number(purchase.amount_pay))).toFixed(2)} $</td>
                                             <td className="px-4 py-1 text-center">{purchase.user_at || 'Unknown'}</td>
                                             {(userRol === 'superadmin' || userRol === 'admin') ? (
                                                 <td className="flex px-4 space-x-2">
@@ -422,7 +422,7 @@ const Dashboard = () => {
                                 </td>
                                 <td className="px-4 py-1 font-bold">
                                     {purchases
-                                        .reduce((total, customer) => total + ((Number(customer.total_amount) - (Number(customer.amount_pay))) || 0), 0)
+                                        .reduce((total, customer) => total + ((Number(customer.total_amount) - ((Number(customer.amount_pay)) + (Number(customer.amount_discount)))) || 0), 0)
                                         .toLocaleString('en-US', {
                                             style: 'decimal',
                                             minimumFractionDigits: 2,

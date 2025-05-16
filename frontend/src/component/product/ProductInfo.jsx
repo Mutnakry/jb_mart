@@ -10,7 +10,7 @@ import { formatDateToKhmer } from '../ForMartDateToKHmer';
 import { IoPrint } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import NullImage from '../../assets/image.png';
-import {API_URL} from '../../service/api'
+import { API_URL } from '../../service/api'
 
 
 const Dashboard = () => {
@@ -244,7 +244,16 @@ const Dashboard = () => {
                       <td className="px-4 py-1 whitespace-nowrap">{product.exclude_tax} $</td>
                       <td className="px-4 py-1 whitespace-nowrap">{product.include_tax} $</td>
                       <td className="px-4 py-1 whitespace-nowrap">{product.profit} $</td>
-                      <td className="px-4 py-1 whitespace-nowrap">{product.qty} {product.unit_names}</td>
+                      {/* <td className="px-4 py-1 whitespace-nowrap">{product.qty} {product.unit_names}111</td> */}
+                      <td className="px-4 py-1">
+                        <button className=''>
+                          {product.mg_stock === 'enable' ? (
+                            <span  > {product.qty} {product.unit_names}</span>
+                          ) : (
+                            <span className=' text-blue-700 text-xs'>មិនគ្រប់គ្រងស្តុក</span>
+                          )}
+                        </button>
+                      </td>
                       <td className="px-4 py-1 whitespace-nowrap">{product.stock} {product.unit_names}</td>
                       <td className="px-4 py-1 whitespace-nowrap">{(product.stock) - (product.qty)} {product.unit_names}</td>
                       <td className="px-4 py-1 whitespace-nowrap">{((product.cost_price) * (product.qty)).toFixed(2)} $</td>
